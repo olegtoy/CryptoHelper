@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/iv_image"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/iv_image"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_changePercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="15dp"
+        android:textSize="14sp" />
+
+
+    <TableLayout
+        android:id="@+id/contentTable"
+        android:layout_below="@id/tv_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="25dp"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:paddingTop="25dp"
+        android:stretchColumns="0,1">
+
+        <TableRow>
+
+            <TextView
+                android:padding="5dp"
+
+                android:text="Change:"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_changeValue"
+                android:layout_width="fill_parent"
+                android:layout_gravity="right"
+                android:padding="5dp"
+                android:text=" - "
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="5dp"
+                android:text="Volume:"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_volume"
+                android:padding="5dp"
+                android:text=" - "
+                android:textAlignment="viewEnd"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="5dp"
+                android:text="High:"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_high"
+                android:padding="5dp"
+                android:text=" - "
+                android:textAlignment="viewEnd"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="5dp"
+                android:text="Low:"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_low"
+                android:padding="5dp"
+                android:text=" - "
+                android:textAlignment="textEnd"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="5dp"
+                android:text="Open:"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_open"
+                android:padding="5dp"
+                android:text=" - "
+                android:textAlignment="textEnd"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <android.support.v4.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Market Cap:"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_marketCap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text=" - "
+                android:textAlignment="textEnd"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="ProofType:"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_proofType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text=" - "
+                android:textAlignment="textEnd"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Algorithm:"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_algorithm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text=" - "
+                android:textAlignment="textEnd"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Supply:"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_supply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text=" - "
+                android:textAlignment="textEnd"
+                android:textSize="14sp" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</RelativeLayout>

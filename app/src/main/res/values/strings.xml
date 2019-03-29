@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Crypto</string>
+    <string name="common_just_now">Just now</string>
+    <string name="category">Category</string>
+
+
+    <string-array name="categories">
+        <item>Breaking News</item>
+        <item>BTC</item>
+        <item>ETH</item>
+        <item>LTC</item>
+        <item>XMR</item>
+        <item>ZEC</item>
+        <item>ETC</item>
+        <item>XRP</item>
+        <item>TRX</item>
+        <item>ADA</item>
+        <item>DASH</item>
+        <item>XTZ</item>
+        <item>USDT</item>
+        <item>Mining</item>
+        <item>Exchange</item>
+        <item>Market</item>
+        <item>Asia</item>
+        <item>ICO</item>
+        <item>Regulation</item>
+        <item>Blockchain</item>
+        <item>Technology</item>
+        <item>Wallet</item>
+        <item>Altcoin</item>
+        <item>Fiat</item>
+        <item>Business</item>
+        <item>Commodity</item>
+        <item>Sponsored</item>
+    </string-array>
+
+    <string-array name="coin">
+        <item>RUB</item>
+        <item>EUR</item>
+        <item>USD</item>
+        <item>JPY</item>
+        <item>GBP</item>
+        <item>CHF</item>
+        <item>CAD</item>
+        <item>AUD</item>
+        <item>CNY</item>
+        <item>HKD</item>
+        <item>NOK</item>
+        <item>SGD</item>
+        <item>RON</item>
+    </string-array>
+
+
+</resources>

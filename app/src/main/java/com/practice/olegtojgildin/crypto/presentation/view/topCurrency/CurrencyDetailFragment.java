@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.topCurrency;
+package com.practice.olegtojgildin.crypto.presentation.view.topCurrency;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
 import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
+import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
+import com.practice.olegtojgildin.crypto.data.models.topCurrency.TopCoin;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

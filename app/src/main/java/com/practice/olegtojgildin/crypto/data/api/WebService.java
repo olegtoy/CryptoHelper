@@ -2,8 +2,8 @@ package com.practice.olegtojgildin.crypto.data.api;
 
 import com.practice.olegtojgildin.crypto.convert.SinglePrice;
 import com.practice.olegtojgildin.crypto.data.models.news.NewsList;
-import com.practice.olegtojgildin.crypto.topCurrency.CryptoCoinFullInfo;
-import com.practice.olegtojgildin.crypto.topCurrency.CryptoCoinList;
+import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
+import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinList;
 
 import io.reactivex.Observable;
 import io.reactivex.Single;
@@ -18,8 +18,10 @@ public interface WebService {
 
    @GET("v2/news/?")
    Observable<NewsList> getNews(@Query("categories") String category,@Query("lang") String lang);
+
    @GET("v2/news/?")
    Observable<NewsList> getLatestNews(@Query("lang") String lang);
+
    @GET("top/totalvolfull")
    Observable<CryptoCoinList> getTopVolume(@Query("limit") String limit, @Query("tsym") String tsym);
 

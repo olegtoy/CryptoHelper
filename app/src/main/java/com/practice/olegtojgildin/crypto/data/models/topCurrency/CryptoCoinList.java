@@ -1,7 +1,7 @@
-package com.practice.olegtojgildin.crypto.topCurrency;
+package com.practice.olegtojgildin.crypto.data.models.topCurrency;
 
 import com.google.gson.annotations.SerializedName;
-import com.practice.olegtojgildin.crypto.topCurrency.TopCoin;
+import com.practice.olegtojgildin.crypto.data.models.topCurrency.TopCoin;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.topCurrency;
+package com.practice.olegtojgildin.crypto.data.models.topCurrency;
 
 import com.google.gson.annotations.SerializedName;
 

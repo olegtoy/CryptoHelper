@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.topCurrency;
+package com.practice.olegtojgildin.crypto.data.models.topCurrency;
 
 
 import java.util.Comparator;

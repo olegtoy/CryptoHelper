@@ -1,8 +1,7 @@
-package com.practice.olegtojgildin.crypto.topCurrency;
+package com.practice.olegtojgildin.crypto.presentation.view.topCurrency;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
+import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoin;
+import com.practice.olegtojgildin.crypto.data.models.topCurrency.TopCoin;
+import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCurrency;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

@@ -54,7 +54,7 @@ public class NewsFragment extends Fragment implements NewsView {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
         initRecyclerView();
-       // loadNewsList();
+       // loadTopCurrency();
         initListener();
         initSpinnner();
     }
@@ -121,7 +121,7 @@ public class NewsFragment extends Fragment implements NewsView {
         mRecyclerView.addItemDecoration(dividerItemDecoration);
     }
 
-   /* public void loadNewsList() {
+   /* public void loadTopCurrency() {
         if(categoryNews.equals("Latest News")) {
             new RetrofitHelper().getService()
                     .getLatestNews("EN")

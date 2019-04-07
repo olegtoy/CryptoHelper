@@ -50,5 +50,61 @@
         <item>RON</item>
     </string-array>
 
+    <string-array name="crypto">
+        <item>EOS</item>
+        <item> ETH</item>
+        <item> LTC</item>
+        <item> XRP</item>
+        <item> BCH</item>
+        <item> QTUM</item>
+        <item> PPT</item>
+        <item>ZB</item>
+        <item> TRX</item>
+        <item>NEO</item>
+        <item>BNB</item>
+        <item> DASH</item>
+        <item> ZEC</item>
+        <item> ADA</item>
+        <item> OKB</item>
+        <item> BGG</item>
+        <item> MANA</item>
+        <item> ETC</item>
+        <item> XLM</item>
+        <item> CELR</item>
+        <item> OMG</item>
+        <item> HT</item>
+        <item> BSV</item>
+        <item>ONT</item>
+        <item>XMR</item>
+        <item> WABI</item>
+        <item> USDT</item>
+        <item> RVN</item>
+        <item>FET</item>
+        <item> TCH</item>
+        <item>GXS</item>
+        <item> BAT</item>
+        <item>EVX</item>
+        <item>ABT</item>
+        <item>PAX</item>
+        <item>BTS</item>
+        <item>TRUE</item>
+        <item>XEM</item>
+        <item>AE</item>
+        <item>NULS</item>
+        <item>RUB</item>
+        <item>EUR</item>
+        <item>USD</item>
+        <item>JPY</item>
+        <item>GBP</item>
+        <item>CHF</item>
+        <item>CAD</item>
+        <item>AUD</item>
+        <item>CNY</item>
+        <item>HKD</item>
+        <item>NOK</item>
+        <item>SGD</item>
+        <item>RON</item>
+    </string-array>
+
 
 </resources>

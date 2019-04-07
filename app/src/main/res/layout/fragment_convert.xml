@@ -1,15 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_green_light">
-    <TextView
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/from_count"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:inputType="number"
+        android:text="0" />
+
+    <Spinner
+        android:id="@+id/spinner_from_convert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="CONVERT"
-        android:textSize="30sp"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="35dp"
+        android:layout_toEndOf="@+id/from_count" />
+
+    <ImageView
+        android:id="@+id/eqaul"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/from_count"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_drag_handle_black_24dp"
+
+        />
 
 
+    <EditText
+        android:id="@+id/to_count"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/from_count"
+        android:layout_below="@+id/from_count"
+        android:layout_marginTop="33dp"
+        android:inputType="number"
+        android:text="0" />
+
+    <Spinner
+        android:id="@+id/spinner_to_convert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/spinner_from_convert"
+        android:layout_alignTop="@+id/to_count" />
 </RelativeLayout>

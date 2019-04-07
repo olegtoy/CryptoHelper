@@ -66,15 +66,14 @@ public class CurrencyDetailFragment extends Fragment {
         if (bundle != null) {
             toSymbol = bundle.getString("to");
             fromSymbol = bundle.getString("from");
-        }
-        else {
+        } else {
             toSymbol = "USD";
-            fromSymbol ="BTC";
+            fromSymbol = "BTC";
         }
     }
 
     public void putCoinInfo(CryptoCoinFullInfo cryptoCoinFullInfo) {
-        CryptoCoinFullInfo.Display.Crypto.Coin coin=cryptoCoinFullInfo.getDisplay().getCrypto().getCryptoCurrency();
+        CryptoCoinFullInfo.Display.Crypto.Coin coin = cryptoCoinFullInfo.getDisplay().getCrypto().getCryptoCurrency();
         mChange.setText(coin.getCHANGEPCTDAY() + "%");
         mPrice.setText(coin.getPRICE());
         mName.setText(fromSymbol);
@@ -115,11 +114,9 @@ public class CurrencyDetailFragment extends Fragment {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::putCoinInfo);
-
-
     }
 
-    public static CurrencyDetailFragment newInstance(TopCoin topCoin,String toCoin) {
+    public static CurrencyDetailFragment newInstance(TopCoin topCoin, String toCoin) {
         Bundle args = new Bundle();
         args.putString("to", toCoin);
         args.putString("from", topCoin.cryptoCoin.getName());

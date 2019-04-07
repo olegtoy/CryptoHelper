@@ -53,23 +53,12 @@ public class CurrencyFragment extends Fragment {
         loadCurrency();
         initSpinnner();
         initListener();
-
     }
 
     public void initListener() {
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                updateActivity();
-            }
-        });
+        mSwipeRefreshLayout.setOnRefreshListener(() -> updateActivity());
 
-        mCurrencyAdapter.setOnClickListener(new CurrencyListAdapter.OnClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                openDetailCurrency(mCurrencyList.get(position));
-            }
-        });
+        mCurrencyAdapter.setOnClickListener((view, position) -> openDetailCurrency(mCurrencyList.get(position)));
     }
 
     public void initSpinnner() {
@@ -79,8 +68,7 @@ public class CurrencyFragment extends Fragment {
         mSpinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String item = (String) adapterView.getItemAtPosition(i);
-                mCoin = item;
+                mCoin=(String) adapterView.getItemAtPosition(i);
                 updateActivity();
             }
 

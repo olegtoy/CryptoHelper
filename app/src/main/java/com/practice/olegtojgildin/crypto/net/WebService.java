@@ -1,10 +1,12 @@
 package com.practice.olegtojgildin.crypto.net;
 
+import com.practice.olegtojgildin.crypto.convert.SinglePrice;
 import com.practice.olegtojgildin.crypto.news.NewsList;
 import com.practice.olegtojgildin.crypto.topCurrency.CryptoCoinFullInfo;
 import com.practice.olegtojgildin.crypto.topCurrency.CryptoCoinList;
 
 import io.reactivex.Observable;
+import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -23,5 +25,8 @@ public interface WebService {
 
    @GET("pricemultifull?")
    Observable<CryptoCoinFullInfo> getCoinsInfo(@Query("fsyms") String fsyms, @Query("tsyms") String tsyms);
+
+   @GET("price?")
+   Single<SinglePrice> getSinglePrice(@Query("fsym") String fsym, @Query("tsyms") String tsyms);
 
 }

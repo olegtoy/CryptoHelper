@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.practice.olegtojgildin.crypto.convert.ConvertFragment;
+import com.practice.olegtojgildin.crypto.presentation.view.convert.ConvertFragment;
 import com.practice.olegtojgildin.crypto.presentation.view.news.NewsFragment;
 import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyFragment;
 

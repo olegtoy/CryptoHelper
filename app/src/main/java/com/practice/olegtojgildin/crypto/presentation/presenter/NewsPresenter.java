@@ -18,7 +18,7 @@ public class NewsPresenter {
     private NewsInteractor newsInteractor;
 
     public NewsPresenter(NewsInteractor newsInteractor) {
-        this.newsInteractor=newsInteractor;
+        this.newsInteractor = newsInteractor;
     }
 
     public void attachView(NewsView view) {
@@ -26,59 +26,12 @@ public class NewsPresenter {
     }
 
     public void loadNewsList(String categoryNews) {
-
-        newsInteractor.getNews(categoryNews,"EN")
+        newsInteractor.getNews(categoryNews, "EN")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<NewsList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(NewsList newsList) {
-                        newsView.setData(newsList);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        //  mSwipeRefreshLayout.setRefreshing(false);
-
-                    }
-                });
-
- /*           new RetrofitHelper().getService()
-                    .getLatestNews("EN")
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Observer<NewsList>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-
-                        }
-
-                        @Override
-                        public void onNext(NewsList newsList) {
-                            newsView.setData(newsList);
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-
-                        }
-
-                        @Override
-                        public void onComplete() {
-                          //  mSwipeRefreshLayout.setRefreshing(false);
-
-                        }
-                    });*/
+                .subscribe(
+                        newsList -> newsView.setData(newsList),
+                        throwable -> newsView.showError());
 
     }
 

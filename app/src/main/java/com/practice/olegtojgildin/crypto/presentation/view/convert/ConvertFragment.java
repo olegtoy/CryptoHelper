@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.convert;
+package com.practice.olegtojgildin.crypto.presentation.view.convert;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +15,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.practice.olegtojgildin.crypto.R;
+import com.practice.olegtojgildin.crypto.data.datastore.WebDataStoreImpl;
+import com.practice.olegtojgildin.crypto.data.models.convert.SinglePrice;
 import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
+import com.practice.olegtojgildin.crypto.data.models.news.NewsList;
+import com.practice.olegtojgildin.crypto.data.repositories.ConvertRepositoryImpl;
+import com.practice.olegtojgildin.crypto.data.repositories.NewsRepositoryImpl;
+import com.practice.olegtojgildin.crypto.domain.convert.ConvertorInteractorImpl;
+import com.practice.olegtojgildin.crypto.domain.news.NewsInteractorImpl;
+import com.practice.olegtojgildin.crypto.presentation.presenter.ConvertPresenter;
+import com.practice.olegtojgildin.crypto.presentation.presenter.NewsPresenter;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -24,7 +33,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by olegtojgildin on 26/03/2019.
  */
 
-public class ConvertFragment extends Fragment {
+public class ConvertFragment extends Fragment implements ConvertView{
     private EditText mFromCount;
     private EditText mToCount;
     private Spinner mSpinnerFrom;
@@ -34,6 +43,9 @@ public class ConvertFragment extends Fragment {
     private Double mFromDouble = 0.0;
     private Double mToDouble = 0.0;
     private Double mPrice = 0.0;
+
+    private ConvertPresenter convertPresenter;
+
 
     @Nullable
     @Override
@@ -53,6 +65,10 @@ public class ConvertFragment extends Fragment {
         mToCount = view.findViewById(R.id.to_count);
         mSpinnerFrom = view.findViewById(R.id.spinner_from_convert);
         mSpinnerTo = view.findViewById(R.id.spinner_to_convert);
+
+        convertPresenter=new ConvertPresenter(new ConvertorInteractorImpl(new ConvertRepositoryImpl(new WebDataStoreImpl())));
+        convertPresenter.attachView(this);
+        convertPresenter.loadNewsList(mFrom,mTo);
     }
 
 
@@ -64,7 +80,7 @@ public class ConvertFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 mTo = (String) adapterView.getItemAtPosition(i);
-                loadCurrency(mFrom, mTo);
+                convertPresenter.loadNewsList(mFrom,mTo);
             }
 
             @Override
@@ -80,7 +96,7 @@ public class ConvertFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 mFrom = (String) adapterView.getItemAtPosition(i);
-                loadCurrency(mFrom, mTo);
+                convertPresenter.loadNewsList(mFrom,mTo);
             }
 
             @Override
@@ -90,6 +106,7 @@ public class ConvertFragment extends Fragment {
         });
 
         mFromCount.addTextChangedListener(new TextWatcher() {
+            
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -106,21 +123,39 @@ public class ConvertFragment extends Fragment {
                 } catch (NumberFormatException ex) {
                     Log.d("Exeption", ex.getMessage());
                 }
-                loadCurrency(mFrom, mTo);
+                convertPresenter.loadNewsList(mFrom,mTo);
             }
         });
     }
 
     public void putCoinInfos(SinglePrice price) {
-        mPrice = Double.parseDouble(price.getPrices());
-        mToCount.setText(Double.toString(mPrice * mFromDouble));
+     //   mToCount.setText(Double.toString(mPrice * mFromDouble));
     }
 
+/*
     public void loadCurrency(String from, String to) {
         new RetrofitHelper().getService()
                 .getSinglePrice(from, to)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::putCoinInfos);
+    }
+*/
+
+    @Override
+    public void setData(NewsList newsList) {
+
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void setmToCount(SinglePrice price) {
+        mPrice = Double.parseDouble(price.getPrices());
+        mToCount.setText(Double.toString(mPrice * mFromDouble));
+
     }
 }

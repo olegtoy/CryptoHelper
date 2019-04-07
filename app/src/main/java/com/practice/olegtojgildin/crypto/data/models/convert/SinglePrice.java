@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.convert;
+package com.practice.olegtojgildin.crypto.data.models.convert;
 
 import com.google.gson.annotations.SerializedName;
 

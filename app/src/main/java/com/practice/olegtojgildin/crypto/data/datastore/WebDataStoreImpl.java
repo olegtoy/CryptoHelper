@@ -1,6 +1,6 @@
 package com.practice.olegtojgildin.crypto.data.datastore;
 
-import com.practice.olegtojgildin.crypto.convert.SinglePrice;
+import com.practice.olegtojgildin.crypto.data.models.convert.SinglePrice;
 import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
 import com.practice.olegtojgildin.crypto.data.models.news.NewsList;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;

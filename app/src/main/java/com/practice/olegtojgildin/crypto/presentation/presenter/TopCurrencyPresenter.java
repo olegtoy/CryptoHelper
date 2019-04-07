@@ -26,7 +26,7 @@ public class TopCurrencyPresenter {
     private TopCurrencyInteractor topCurrencyInteractor;
 
     public TopCurrencyPresenter(TopCurrencyInteractor topCurrencyInteractor) {
-        this.topCurrencyInteractor=topCurrencyInteractor;
+        this.topCurrencyInteractor = topCurrencyInteractor;
     }
 
     public void attachView(TopCurrencyView view) {
@@ -34,33 +34,13 @@ public class TopCurrencyPresenter {
     }
 
     public void loadTopCurrency(String limit, String tsym) {
-
         topCurrencyInteractor
-                .getTopVolume(limit,tsym)
+                .getTopVolume(limit, tsym)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<CryptoCoinList>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(CryptoCoinList newsList) {
-                        topCurrencyView.setData(newsList);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        //  mSwipeRefreshLayout.setRefreshing(false);
-
-                    }
-                });
-
+                .subscribe(
+                        cryptoCoinList -> topCurrencyView.setData(cryptoCoinList),
+                        throwable -> topCurrencyView.showError());
 
     }
 }

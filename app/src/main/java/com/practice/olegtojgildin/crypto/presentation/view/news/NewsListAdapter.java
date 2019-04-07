@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.news;
+package com.practice.olegtojgildin.crypto.presentation.view.news;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
+import com.practice.olegtojgildin.crypto.data.models.news.CryptoNewsArticle;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

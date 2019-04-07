@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.news;
+package com.practice.olegtojgildin.crypto.data.models.news;
 
 import android.os.Parcel;
 import android.os.Parcelable;

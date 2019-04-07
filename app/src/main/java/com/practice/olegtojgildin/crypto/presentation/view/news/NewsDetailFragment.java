@@ -1,6 +1,5 @@
-package com.practice.olegtojgildin.crypto.news;
+package com.practice.olegtojgildin.crypto.presentation.view.news;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,15 +9,14 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.practice.olegtojgildin.crypto.R;
+import com.practice.olegtojgildin.crypto.data.models.news.CryptoNewsArticle;
 import com.squareup.picasso.Picasso;
 
 /**

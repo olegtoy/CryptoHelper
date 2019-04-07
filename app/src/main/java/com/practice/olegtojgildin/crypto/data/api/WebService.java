@@ -1,7 +1,7 @@
-package com.practice.olegtojgildin.crypto.net;
+package com.practice.olegtojgildin.crypto.data.api;
 
 import com.practice.olegtojgildin.crypto.convert.SinglePrice;
-import com.practice.olegtojgildin.crypto.news.NewsList;
+import com.practice.olegtojgildin.crypto.data.models.news.NewsList;
 import com.practice.olegtojgildin.crypto.topCurrency.CryptoCoinFullInfo;
 import com.practice.olegtojgildin.crypto.topCurrency.CryptoCoinList;
 

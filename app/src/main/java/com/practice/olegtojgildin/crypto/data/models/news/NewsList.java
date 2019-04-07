@@ -1,7 +1,7 @@
-package com.practice.olegtojgildin.crypto.news;
+package com.practice.olegtojgildin.crypto.data.models.news;
 
 import com.google.gson.annotations.SerializedName;
-import com.practice.olegtojgildin.crypto.news.CryptoNewsArticle;
+import com.practice.olegtojgildin.crypto.data.models.news.CryptoNewsArticle;
 
 import java.util.List;
 

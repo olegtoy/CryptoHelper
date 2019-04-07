@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.practice.olegtojgildin.crypto.R;
-import com.practice.olegtojgildin.crypto.net.RetrofitHelper;
+import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
 
 import java.util.ArrayList;
 import java.util.List;

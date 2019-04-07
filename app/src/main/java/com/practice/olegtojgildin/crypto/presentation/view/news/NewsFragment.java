@@ -1,17 +1,15 @@
-package com.practice.olegtojgildin.crypto.news;
+package com.practice.olegtojgildin.crypto.presentation.view.news;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,29 +18,31 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.practice.olegtojgildin.crypto.R;
-import com.practice.olegtojgildin.crypto.net.RetrofitHelper;
-import com.practice.olegtojgildin.crypto.topCurrency.CurrencyFragment;
+import com.practice.olegtojgildin.crypto.data.repositories.NewsRepositoryImpl;
+import com.practice.olegtojgildin.crypto.data.datastore.WebDataStoreImpl;
+import com.practice.olegtojgildin.crypto.domain.news.NewsInteractorImpl;
+import com.practice.olegtojgildin.crypto.data.models.news.CryptoNewsArticle;
+import com.practice.olegtojgildin.crypto.data.models.news.NewsList;
+import com.practice.olegtojgildin.crypto.presentation.presenter.NewsPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by olegtojgildin on 26/03/2019.
  */
 
-public class NewsFragment extends Fragment  {
+public class NewsFragment extends Fragment implements NewsView {
 
     private List<CryptoNewsArticle> mNewsList;
     private RecyclerView mRecyclerView;
     private NewsListAdapter mNewsAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private Spinner mSpinnerCategory;
-    private String categoryNews="";
+    private String categoryNews="BTC";
+
+
+    private NewsPresenter newsPresenter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,15 +54,20 @@ public class NewsFragment extends Fragment  {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
         initRecyclerView();
-        loadNewsList();
+       // loadNewsList();
         initListener();
         initSpinnner();
     }
 
     public void initView(View view) {
+
         mRecyclerView = view.findViewById(R.id.rv_news);
         mSwipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
         mSpinnerCategory = view.findViewById(R.id.spinner_select_cat);
+
+        newsPresenter=new NewsPresenter(new NewsInteractorImpl(new NewsRepositoryImpl(new WebDataStoreImpl())));
+        newsPresenter.attachView(this);
+        newsPresenter.loadNewsList(categoryNews);
     }
 
     public void initListener() {
@@ -116,7 +121,7 @@ public class NewsFragment extends Fragment  {
         mRecyclerView.addItemDecoration(dividerItemDecoration);
     }
 
-    public void loadNewsList() {
+   /* public void loadNewsList() {
         if(categoryNews.equals("Latest News")) {
             new RetrofitHelper().getService()
                     .getLatestNews("EN")
@@ -178,7 +183,7 @@ public class NewsFragment extends Fragment  {
                         }
                     });
         }
-    }
+    }*/
 
     private void openWebSite(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -196,8 +201,20 @@ public class NewsFragment extends Fragment  {
 
     private void updateActivity() {
         mNewsList.clear();
-        loadNewsList();
+        newsPresenter.loadNewsList(categoryNews);
+        mNewsAdapter.notifyDataSetChanged();
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
 
+    @Override
+    public void setData(NewsList newsList) {
+        mNewsAdapter.setListNews(newsList.getItems());
+        mNewsAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showError() {
+
+    }
 }

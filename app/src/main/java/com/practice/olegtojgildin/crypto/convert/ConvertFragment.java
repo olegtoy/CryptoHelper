@@ -3,7 +3,6 @@ package com.practice.olegtojgildin.crypto.convert;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -14,17 +13,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
-import com.practice.olegtojgildin.crypto.net.RetrofitHelper;
-import com.practice.olegtojgildin.crypto.news.NewsList;
-import com.practice.olegtojgildin.crypto.topCurrency.CurrencyListAdapter;
+import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
 
-import io.reactivex.Observer;
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**

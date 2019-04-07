@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.practice.olegtojgildin.crypto.convert.ConvertFragment;
-import com.practice.olegtojgildin.crypto.news.NewsFragment;
+import com.practice.olegtojgildin.crypto.presentation.view.news.NewsFragment;
 import com.practice.olegtojgildin.crypto.topCurrency.CurrencyFragment;
 
 public class MainActivity extends AppCompatActivity {

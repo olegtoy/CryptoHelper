@@ -1,30 +1,17 @@
 package com.practice.olegtojgildin.crypto.topCurrency;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
-import com.practice.olegtojgildin.crypto.net.RetrofitHelper;
-import com.practice.olegtojgildin.crypto.news.CryptoNewsArticle;
-import com.practice.olegtojgildin.crypto.news.NewsDetailFragment;
-import com.practice.olegtojgildin.crypto.news.NewsList;
-import com.squareup.picasso.Picasso;
+import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
 
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**

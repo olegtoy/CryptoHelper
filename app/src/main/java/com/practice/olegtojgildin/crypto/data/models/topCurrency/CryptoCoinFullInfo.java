@@ -15,24 +15,25 @@ public class CryptoCoinFullInfo {
         return display;
     }
 
-    public class Display{
+    public class Display {
 
-        @SerializedName(value="BTC", alternate={"EOS","ETH","LTC", "XRP", "BCH", "QTUM", "PPT","ZB", "TRX", "NEO", "BNB", "DASH", "ZEC", "ADA", "OKB", "BGG", "MANA", "ETC", "XLM", "CELR", "OMG", "HT", "BSV", "ONT", "XMR", "WABI", "USDT", "RVN", "FET", "TCH", "GXS", "BAT", "EVX", "ABT","PAX","BTS", "TRUE", "XEM","AE","NULS"})
-        public  Crypto crypto;
+        @SerializedName(value = "BTC", alternate = {"EOS", "ETH", "LTC", "XRP", "BCH", "QTUM", "PPT", "ZB", "TRX", "NEO", "BNB", "DASH", "ZEC", "ADA", "OKB", "BGG", "MANA", "ETC", "XLM", "CELR", "OMG", "HT", "BSV", "ONT", "XMR", "WABI", "USDT", "RVN", "FET", "TCH", "GXS", "BAT", "EVX", "ABT", "PAX", "BTS", "TRUE", "XEM", "AE", "NULS"})
+        public Crypto crypto;
 
         public Crypto getCrypto() {
             return crypto;
         }
 
-        public class  Crypto{
-            @SerializedName(value="USD", alternate={"EUR","RUB","JPY","GBP","CHF","CAD","AUD","CNY","HKD","NOK","SGD","RON"})
+        public class Crypto {
+            @SerializedName(value = "USD", alternate = {"EUR", "RUB", "JPY", "GBP", "CHF", "CAD", "AUD", "CNY", "HKD", "NOK", "SGD", "RON"})
             public Coin cryptoCurrency;
 
             public Coin getCryptoCurrency() {
                 return cryptoCurrency;
             }
 
-            public class Coin{
+            public class Coin {
+                private String FROMSYMBOL;
                 private String PRICE;
                 private String CHANGEDAY;
                 private String HIGHDAY;
@@ -42,6 +43,20 @@ public class CryptoCoinFullInfo {
                 private String SUPPLY;
                 private String CHANGEPCTDAY;
                 private String VOLUME24HOUR;
+                private String IMAGEURL;
+                private String MARKET;
+
+                public String getMARKET() {
+                    return MARKET;
+                }
+
+                public String getIMAGEURL() {
+                    return "https://www.cryptocompare.com/"+IMAGEURL;
+                }
+
+                public String getFROMSYMBOL() {
+                    return FROMSYMBOL;
+                }
 
                 public String getPRICE() {
                     return PRICE;

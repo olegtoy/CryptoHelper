@@ -54,7 +54,6 @@ public class NewsFragment extends Fragment implements NewsView {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
         initRecyclerView();
-       // loadTopCurrency();
         initListener();
         initSpinnner();
     }
@@ -121,69 +120,6 @@ public class NewsFragment extends Fragment implements NewsView {
         mRecyclerView.addItemDecoration(dividerItemDecoration);
     }
 
-   /* public void loadTopCurrency() {
-        if(categoryNews.equals("Latest News")) {
-            new RetrofitHelper().getService()
-                    .getLatestNews("EN")
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Observer<NewsList>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-
-                        }
-
-                        @Override
-                        public void onNext(NewsList newsList) {
-                            mNewsList = newsList.getItems();
-                            mNewsAdapter.setListNews(mNewsList);
-                            mNewsAdapter.notifyDataSetChanged();
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-
-                        }
-
-                        @Override
-                        public void onComplete() {
-                            mSwipeRefreshLayout.setRefreshing(false);
-
-                        }
-                    });
-        }
-        else {
-            new RetrofitHelper().getService()
-                    .getNews(categoryNews, "EN")
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Observer<NewsList>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-
-                        }
-
-                        @Override
-                        public void onNext(NewsList newsList) {
-                            mNewsList = newsList.getItems();
-                            mNewsAdapter.setListNews(mNewsList);
-                            mNewsAdapter.notifyDataSetChanged();
-                            Log.d("size", Integer.toString(mNewsList.size()));
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-
-                        }
-
-                        @Override
-                        public void onComplete() {
-                            mSwipeRefreshLayout.setRefreshing(false);
-
-                        }
-                    });
-        }
-    }*/
 
     private void openWebSite(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW);

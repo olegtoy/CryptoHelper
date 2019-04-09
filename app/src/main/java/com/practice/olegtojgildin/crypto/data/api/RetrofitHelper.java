@@ -16,7 +16,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class RetrofitHelper {
-    public static final String VERSION_API = "v2/";
     public static final String BASE_URL = "https://min-api.cryptocompare.com/data/";
 
     public WebService getService() {

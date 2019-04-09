@@ -106,7 +106,7 @@ public class ConvertFragment extends Fragment implements ConvertView{
         });
 
         mFromCount.addTextChangedListener(new TextWatcher() {
-            
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -127,20 +127,6 @@ public class ConvertFragment extends Fragment implements ConvertView{
             }
         });
     }
-
-    public void putCoinInfos(SinglePrice price) {
-     //   mToCount.setText(Double.toString(mPrice * mFromDouble));
-    }
-
-/*
-    public void loadCurrency(String from, String to) {
-        new RetrofitHelper().getService()
-                .getSinglePrice(from, to)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::putCoinInfos);
-    }
-*/
 
     @Override
     public void setData(NewsList newsList) {

@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item
-        android:id="@+id/nav_news"
-        android:icon="@drawable/ic_folded_newspaper"
-        android:title="News"/>
-    <item
-        android:id="@+id/nav_favo"
-        android:icon="@drawable/ic_star_border_black_24dp"
-        android:title="Favorites"/>
-    <item
-        android:id="@+id/nav_convert"
-        android:icon="@drawable/ic_exchange"
-        android:title="Convertor"/>
     <item
         android:id="@+id/nav_currency"
         android:icon="@drawable/ic_bitcoin_logo"
-        android:title="Currency"/>
-
+        android:title="Currency" />
+    <item
+        android:id="@+id/nav_news"
+        android:icon="@drawable/ic_folded_newspaper"
+        android:title="News" />
+    <item
+        android:id="@+id/nav_favo"
+        android:icon="@drawable/ic_star_border_black_24dp"
+        android:title="Favorites" />
+    <item
+        android:id="@+id/nav_convert"
+        android:icon="@drawable/ic_exchange"
+        android:title="Convertor" />
 
 
 </menu>

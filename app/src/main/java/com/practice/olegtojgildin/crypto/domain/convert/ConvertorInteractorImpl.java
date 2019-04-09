@@ -11,8 +11,8 @@ import io.reactivex.Single;
 public class ConvertorInteractorImpl implements ConvertInteractor {
     private ConvertRepository convertRepository;
 
-    public ConvertorInteractorImpl(ConvertRepository newsRepository) {
-        this.convertRepository = newsRepository;
+    public ConvertorInteractorImpl(ConvertRepository convertRepository) {
+        this.convertRepository = convertRepository;
     }
 
 

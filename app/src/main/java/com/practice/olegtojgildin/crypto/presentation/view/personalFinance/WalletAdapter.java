@@ -24,6 +24,8 @@ import java.util.List;
 public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder> {
     //private CurrencyListAdapter.OnClickListener mOnClickListener;
     private List<CoinWithCount> mCurrencyList;
+    private List<CryptoCoinFullInfo> mFullInfo;
+
     private Context mContext;
 
     public WalletAdapter(Context context) {
@@ -38,6 +40,10 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder
 
     public void setListNews(List<CoinWithCount> list) {
         mCurrencyList = list;
+    }
+
+    public void setListFullInfo(List<CryptoCoinFullInfo> list ){
+        mFullInfo=list;
     }
 
     public CoinWithCount getCoinItem(int position) {
@@ -57,16 +63,21 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder
         viewHolder.tvName.setText(coinWithCount.getCoin());
         viewHolder.tvCount.setText(Double.toString(coinWithCount.getCount()));
 
-      /*  Picasso.get()
+     /*   Picasso.get()
                 .load(cryptoCoin.getIMAGEURL())
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_foreground)
                 .into(viewHolder.ivImage);*/
     }
+    public void removeCoin(int index){
+        mCurrencyList.remove(index);
+        notifyItemRemoved(index);
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvCount;
         TextView tvName;
+        View viewBackground,viewForeground;
         //TextView tvPrice;
 
         ImageView ivImage;
@@ -74,9 +85,12 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder
 
         public ViewHolder(View view) {
             super(view);
-            //   ivImage = view.findViewById(R.id.tv);
+            ivImage = view.findViewById(R.id.imageCoin);
             tvName = view.findViewById(R.id.nameCount);
             tvCount = view.findViewById(R.id.countCoin);
+            viewBackground=view.findViewById(R.id.view_bachground);
+            viewForeground=view.findViewById(R.id.view_foreground);
+
             //tvPrice = view.findViewById(R.id.tv_price);
         }
 

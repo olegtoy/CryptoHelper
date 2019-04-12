@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.practice.olegtojgildin.crypto.MainActivity;
 import com.practice.olegtojgildin.crypto.R;
 import com.practice.olegtojgildin.crypto.data.datastore.WebDataStoreImpl;
 import com.practice.olegtojgildin.crypto.data.local.DbManager;
+import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.CoinWithCount;
+import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.DbManagerPersonal;
 import com.practice.olegtojgildin.crypto.data.local.dataStore.DbDataStoreImpl;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.TopCoin;
@@ -31,6 +34,9 @@ import com.practice.olegtojgildin.crypto.domain.topCurrency.TopCurrencyInteracto
 import com.practice.olegtojgildin.crypto.domain.topCurrency.TopCurrencyInteractorImpl;
 import com.practice.olegtojgildin.crypto.presentation.presenter.FavoritesPresenter;
 import com.practice.olegtojgildin.crypto.presentation.presenter.NewsPresenter;
+import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.RecyclerItemTouchHelperListener;
+import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.WalletAdapter;
+import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.WalletItemTouchHelper;
 import com.practice.olegtojgildin.crypto.presentation.view.selectCurrency.CurrencyListAdapterSelect;
 import com.practice.olegtojgildin.crypto.presentation.view.selectCurrency.SelectCurrencyActivity;
 
@@ -45,7 +51,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by olegtojgildin on 26/03/2019.
  */
 
-public class FavoritesFragment extends Fragment implements FavoritesView {
+public class FavoritesFragment extends Fragment implements FavoritesView, RecyclerItemTouchHelperListener {
     private FloatingActionButton mAddCurrencyFAB;
     private RecyclerView mRecyclerView;
     private FavoritesAdapter mAdapter;
@@ -92,6 +98,10 @@ public class FavoritesFragment extends Fragment implements FavoritesView {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
                 layoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
+
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallBack = new FavoritesItemTouchHelper(0, ItemTouchHelper.LEFT, this);
+        new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(mRecyclerView);
+
     }
 
     @Override
@@ -135,4 +145,17 @@ public class FavoritesFragment extends Fragment implements FavoritesView {
 
     }
 
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+        if (viewHolder instanceof FavoritesAdapter.ViewHolder) {
+            String item = mFavoriteListString.get(viewHolder.getAdapterPosition());
+
+            DbManager dbManager = DbManager.getInstance(getContext());
+            dbManager.deleteNote(item);
+
+            int deleteIndex = viewHolder.getAdapterPosition();
+            mAdapter.remove(deleteIndex);
+
+        }
+    }
 }

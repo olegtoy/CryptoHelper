@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ import java.util.List;
  * Created by olegtojgildin on 12/04/2019.
  */
 
-public class WalletFragment extends Fragment implements WalletView {
+public class WalletFragment extends Fragment implements WalletView, RecyclerItemTouchHelperListener {
     private FloatingActionButton mAddCurrencyFAB;
     private RecyclerView mRecyclerView;
     private WalletAdapter mAdapter;
@@ -56,21 +57,19 @@ public class WalletFragment extends Fragment implements WalletView {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
 
-        mCoinList=new ArrayList<>();
-        coinListName=new ArrayList<>();
-       // mFavoriteList = new ArrayList<>();
-        //mFavoriteListString = new ArrayList<>();
+        mCoinList = new ArrayList<>();
+        coinListName = new ArrayList<>();
         mAddCurrencyFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForResult(AddCoinWithCountActivity.newIntent(getContext()), 1);
             }
         });
-        walletPresenter = new WalletPresenter(new WalletInteractorImpl(new WalletRepositoryImpl(new WebDataStoreImpl(),new DbDataStoreImpl(getContext()))));
+        walletPresenter = new WalletPresenter(new WalletInteractorImpl(new WalletRepositoryImpl(new WebDataStoreImpl(), new DbDataStoreImpl(getContext()))));
         walletPresenter.attachView(this);
         initRecyclerView();
         walletPresenter.loadCoin();
-
+        walletPresenter.loadNewsList(coinListName);
     }
 
     public void initRecyclerView() {
@@ -85,28 +84,34 @@ public class WalletFragment extends Fragment implements WalletView {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
                 layoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
+
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallBack = new WalletItemTouchHelper(0, ItemTouchHelper.LEFT, this);
+        new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(mRecyclerView);
+
+
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (data != null) {
             String name = data.getStringExtra("name");
-            Double count = data.getDoubleExtra("count",0);
-            addCurrency(name,count);
+            Double count = data.getDoubleExtra("count", 0);
+            addCurrency(name, count);
         }
     }
 
-    private void addCurrency(String name,Double count) {
-        DbManagerPersonal dbManager = new DbManagerPersonal(getContext());
+    private void addCurrency(String name, Double count) {
+        DbManagerPersonal dbManager = DbManagerPersonal.getInstance(getContext());
 
-        if(!coinListName.contains(name))
-            dbManager.addCurrency(name,count);
+        if (!coinListName.contains(name))
+            dbManager.addCurrency(name, count);
         else {
             Log.d("UPDATE", "true");
-            dbManager.updateCurrency(name,count);
+            dbManager.updateCurrency(name, count);
         }
 
         mCoinList.clear();
+        coinListName.clear();
         walletPresenter.loadCoin();
         mAdapter.notifyDataSetChanged();
     }
@@ -118,13 +123,14 @@ public class WalletFragment extends Fragment implements WalletView {
 
     @Override
     public void setData(CryptoCoinFullInfo newsList) {
+        //mAdapter;
 
     }
 
     @Override
     public void setDataWallet(List<CoinWithCount> list) {
-        mCoinList=list;
-        for(int i =0; i<list.size();i++)
+        mCoinList = list;
+        for (int i = 0; i < list.size(); i++)
             coinListName.add(list.get(i).getCoin());
 
 
@@ -136,5 +142,19 @@ public class WalletFragment extends Fragment implements WalletView {
     @Override
     public void showError() {
 
+    }
+
+    @Override
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+        if (viewHolder instanceof WalletAdapter.ViewHolder) {
+            CoinWithCount item = mCoinList.get(viewHolder.getAdapterPosition());
+
+            DbManagerPersonal dbManager = DbManagerPersonal.getInstance(getContext());
+            dbManager.deleteNote(item.getCoin());
+
+            int deleteIndex = viewHolder.getAdapterPosition();
+            mAdapter.removeCoin(deleteIndex);
+
+        }
     }
 }

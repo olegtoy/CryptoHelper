@@ -87,13 +87,13 @@ public class DbManagerPersonal {
     }
 
 
-    public void deleteNote(String note) {
+    public void deleteNote(String name) {
         SQLiteDatabase db = null;
         try {
             db = dbHelper.getWritableDatabase();
             db.beginTransaction();
             if (db.inTransaction())
-                db.delete(DbHelperPersonal.PERSONAL_TABLE, String.format("%1$s= '%2$s'", DbHelperPersonal.COIN, note), null);
+                db.delete(DbHelperPersonal.PERSONAL_TABLE, String.format("%1$s= '%2$s'", DbHelperPersonal.COIN, name), null);
             db.setTransactionSuccessful();
 
         } catch (SQLiteException e) {

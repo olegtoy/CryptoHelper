@@ -51,8 +51,12 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
     @Override
     public FavoritesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext)
-                .inflate(R.layout.item_currency, parent, false);
+                .inflate(R.layout.item_favorites, parent, false);
         return new FavoritesAdapter.ViewHolder(view, mOnClickListener);
+    }
+    public void remove(int index){
+        mCurrencyList.remove(index);
+        notifyItemRemoved(index);
     }
 
     @Override
@@ -78,6 +82,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         TextView tvChange;
         TextView tvAlgorithm;
         TextView tvProofType;
+        View viewBackground,viewForeground;
 
         ImageView ivImage;
         CurrencyListAdapter.OnClickListener ocListener;
@@ -91,6 +96,9 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
             tvChange = view.findViewById(R.id.tv_changeValue);
             tvAlgorithm = view.findViewById(R.id.tv_algorithm);
             tvProofType = view.findViewById(R.id.tv_proofType);
+            viewBackground=view.findViewById(R.id.view_bachground1);
+            viewForeground=view.findViewById(R.id.view_foreground1);
+
             this.ocListener = ocListener;
             view.setOnClickListener(this);
         }

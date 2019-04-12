@@ -43,6 +43,7 @@
         android:textSize="14sp" />
 
 
+
     <TableLayout
         android:id="@+id/contentTable"
         android:layout_below="@id/tv_price"
@@ -222,6 +223,14 @@
         </TableRow>
 
     </TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/openChart"
+        android:text="Open Chart"
+        android:layout_below="@+id/contentTable"
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.practice.olegtojgildin.crypto.data.api;
 
+import com.practice.olegtojgildin.crypto.data.models.HistoryList;
 import com.practice.olegtojgildin.crypto.data.models.convert.SinglePrice;
 import com.practice.olegtojgildin.crypto.data.models.news.NewsList;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
@@ -30,5 +31,9 @@ public interface WebService {
 
    @GET("price?")
    Single<SinglePrice> getSinglePrice(@Query("fsym") String fsym, @Query("tsyms") String tsyms);
+
+
+   @GET("histoday")
+   Observable<HistoryList> getHistoryDay(@Query("fsym") String fsyms, @Query("tsym") String tsyms, @Query("limit") String limit);
 
 }

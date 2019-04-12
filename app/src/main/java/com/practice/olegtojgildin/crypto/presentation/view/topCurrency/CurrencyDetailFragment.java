@@ -3,15 +3,18 @@ package com.practice.olegtojgildin.crypto.presentation.view.topCurrency;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
 import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.TopCoin;
+import com.practice.olegtojgildin.crypto.presentation.view.chart.ChartFragment;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -35,6 +38,7 @@ public class CurrencyDetailFragment extends Fragment {
     private TextView mOpen;
     private TextView mMarketCap;
     private TextView mSupply;
+    private Button mOpenChart;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class CurrencyDetailFragment extends Fragment {
         initView(view);
         initCoin();
         loadCurrency();
+        initListener();
     }
 
     @Nullable
@@ -88,6 +93,19 @@ public class CurrencyDetailFragment extends Fragment {
         mOpen = view.findViewById(R.id.tv_open);
         mMarketCap = view.findViewById(R.id.tv_marketCap);
         mSupply = view.findViewById(R.id.tv_supply);
+        mOpenChart=view.findViewById(R.id.openChart);
+    }
+
+    public void initListener(){
+        mOpenChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, ChartFragment.newInstance(fromSymbol,toSymbol));
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
     }
 
     public void setColor() {

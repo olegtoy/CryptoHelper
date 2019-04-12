@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.practice.olegtojgildin.crypto.presentation.view.convert.ConvertFragment;
 import com.practice.olegtojgildin.crypto.presentation.view.favorites.FavoritesFragment;
 import com.practice.olegtojgildin.crypto.presentation.view.news.NewsFragment;
+import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.WalletFragment;
 import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_convert:
                             selectedFragment = new ConvertFragment();
+                            break;
+                        case R.id.nav_wallet:
+                            selectedFragment = new WalletFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

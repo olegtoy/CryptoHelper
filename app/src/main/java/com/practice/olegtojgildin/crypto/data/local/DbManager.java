@@ -18,6 +18,22 @@ import io.reactivex.Single;
  */
 
 public class DbManager {
+
+    private static volatile DbManager INSTANCE;
+
+    public static DbManager getInstance(final Context context) {
+        DbManager instance = INSTANCE;
+        if (instance == null) {
+            synchronized (DbManager.class) {
+                instance = INSTANCE;
+                if (instance == null) {
+                    instance = INSTANCE = new DbManager(context);
+                }
+            }
+        }
+        return instance;
+    }
+
     private DbHelper dbHelper;
 
     public DbManager(Context context) {

@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.view.selectCurrency.SelectCurrencyActivity" />
+        <activity android:name=".presentation.view.personalFinance.AddCoinWithCountActivity"/>
     </application>
 
 </manifest>

@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    public static final int VERSION_DB=2;
+    public static final int VERSION_DB=3;
     public static final String DB_NAME="Currency.db";
     public static final String FAVORITES_TABLE="FAVORITES";
     public static final String NAME="NAME";
@@ -41,7 +41,7 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public void createEmptyTables(SQLiteDatabase database){
-        database.execSQL( "CREATE TABLE FAVORITES(id integer primary key AUTOINCREMENT, name text not null)" );
+        database.execSQL( "CREATE TABLE FAVORITES(id integer primary key AUTOINCREMENT, name text not null UNIQUE)" );
     }
     private void deleteTables(SQLiteDatabase database){
         database.execSQL( "DROP TABLE IF EXISTS FAVORITES" );

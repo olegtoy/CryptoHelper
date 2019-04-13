@@ -22,8 +22,7 @@ import java.util.List;
  */
 
 public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder> {
-    //private CurrencyListAdapter.OnClickListener mOnClickListener;
-    private List<CoinWithCount> mCurrencyList;
+
     private List<CryptoCoinFullInfo> mFullInfo;
 
     private Context mContext;
@@ -35,19 +34,18 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return mCurrencyList.size();
+        return mFullInfo.size();
     }
 
-    public void setListNews(List<CoinWithCount> list) {
-        mCurrencyList = list;
+
+    public void setListFull(List<CryptoCoinFullInfo> listFull) {
+        mFullInfo = listFull;
+        notifyDataSetChanged();
     }
 
-    public void setListFullInfo(List<CryptoCoinFullInfo> list ){
-        mFullInfo=list;
-    }
 
-    public CoinWithCount getCoinItem(int position) {
-        return mCurrencyList.get(position);
+    public CryptoCoinFullInfo getCoinItem(int position) {
+        return mFullInfo.get(position);
     }
 
     @Override
@@ -59,26 +57,33 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(WalletAdapter.ViewHolder viewHolder, int position) {
-        CoinWithCount coinWithCount = mCurrencyList.get(position);
-        viewHolder.tvName.setText(coinWithCount.getCoin());
-        viewHolder.tvCount.setText(Double.toString(coinWithCount.getCount()));
+        CryptoCoinFullInfo cryptoCoinFullInfo = mFullInfo.get(position);
+        double count = cryptoCoinFullInfo.display.crypto.cryptoCurrency.getCountCoin();
+        double price = Double.parseDouble(cryptoCoinFullInfo.raw.crypto.cryptoCurrency.getPRICE());
 
-     /*   Picasso.get()
-                .load(cryptoCoin.getIMAGEURL())
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_foreground)
-                .into(viewHolder.ivImage);*/
+        viewHolder.tvName.setText(cryptoCoinFullInfo.display.crypto.cryptoCurrency.getNameCoin());
+        viewHolder.tvCount.setText(Double.toString(count) +" "+cryptoCoinFullInfo.display.crypto.cryptoCurrency.getFROMSYMBOL());
+        viewHolder.tvPrice.setText(String.format("%.2f", price));
+        viewHolder.tvSum.setText(String.format( "%.2f", count*price) + cryptoCoinFullInfo.display.crypto.cryptoCurrency.getTOSYMBOL());
+        if (mFullInfo.size() != 0)
+            Picasso.get()
+                    .load(mFullInfo.get(position).display.crypto.cryptoCurrency.getIMAGEURL())
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.ic_launcher_foreground)
+                    .into(viewHolder.ivImage);
     }
-    public void removeCoin(int index){
-        mCurrencyList.remove(index);
+
+    public void removeCoin(int index) {
+        mFullInfo.remove(index);
         notifyItemRemoved(index);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvCount;
         TextView tvName;
-        View viewBackground,viewForeground;
-        //TextView tvPrice;
+        View viewBackground, viewForeground;
+        TextView tvPrice;
+        TextView tvSum;
 
         ImageView ivImage;
         //  CurrencyListAdapter.OnClickListener ocListener;
@@ -88,18 +93,12 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder
             ivImage = view.findViewById(R.id.imageCoin);
             tvName = view.findViewById(R.id.nameCount);
             tvCount = view.findViewById(R.id.countCoin);
-            viewBackground=view.findViewById(R.id.view_bachground);
-            viewForeground=view.findViewById(R.id.view_foreground);
-
-            //tvPrice = view.findViewById(R.id.tv_price);
+            viewBackground = view.findViewById(R.id.view_bachground);
+            viewForeground = view.findViewById(R.id.view_foreground);
+            tvPrice = view.findViewById(R.id.price_tv);
+            tvSum = view.findViewById(R.id.sum_tv);
         }
 
-   /*     @Override
-        public void onClick(View view) {
-            if (ocListener != null) {
-                ocListener.onClick(view, getAdapterPosition());
-            }
-        }*/
 
     }
 

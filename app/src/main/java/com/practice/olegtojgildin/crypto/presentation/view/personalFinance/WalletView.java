@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 public interface WalletView {
-    void setData(CryptoCoinFullInfo newsList);
-    void setDataWallet(List<CoinWithCount> list);
+    void setData(List<CryptoCoinFullInfo> newsList);
+  //  void setDataWallet(List<CoinWithCount> list);
     void showError();
 }

@@ -33,7 +33,10 @@ public class CryptoCoinFullInfo {
             }
 
             public class Coin {
+                private String nameCoin;
+                private Double countCoin;
                 private String FROMSYMBOL;
+                private String TOSYMBOL;
                 private String PRICE;
                 private String CHANGEDAY;
                 private String HIGHDAY;
@@ -45,6 +48,139 @@ public class CryptoCoinFullInfo {
                 private String VOLUME24HOUR;
                 private String IMAGEURL;
                 private String MARKET;
+
+                public String getTOSYMBOL() {
+                    return TOSYMBOL;
+                }
+
+                public String getNameCoin() {
+                    return nameCoin;
+                }
+
+                public void setNameCoin(String nameCoin) {
+                    this.nameCoin = nameCoin;
+                }
+
+                public void setCountCoin(Double countCoin) {
+                    this.countCoin = countCoin;
+                }
+
+                public Double getCountCoin() {
+                    return countCoin;
+                }
+
+                public String getMARKET() {
+                    return MARKET;
+                }
+
+                public String getIMAGEURL() {
+                    return "https://www.cryptocompare.com/"+IMAGEURL;
+                }
+
+                public String getFROMSYMBOL() {
+                    return FROMSYMBOL;
+                }
+
+                public String getPRICE() {
+                    return PRICE;
+                }
+
+                public String getCHANGEDAY() {
+                    return CHANGEDAY;
+                }
+
+                public String getHIGHDAY() {
+                    return HIGHDAY;
+                }
+
+                public String getLOWDAY() {
+                    return LOWDAY;
+                }
+
+                public String getOPENDAY() {
+                    return OPENDAY;
+                }
+
+                public String getMKTCAP() {
+                    return MKTCAP;
+                }
+
+                public String getSUPPLY() {
+                    return SUPPLY;
+                }
+
+                public String getCHANGEPCTDAY() {
+                    return CHANGEPCTDAY;
+                }
+
+                public String getVOLUME24HOUR() {
+                    return VOLUME24HOUR;
+                }
+            }
+        }
+
+    }
+
+    @SerializedName("RAW")
+    public Raw raw;
+
+    public Raw getRaw() {
+        return raw;
+    }
+
+    public class Raw {
+
+        @SerializedName(value = "BTC", alternate = {"EOS", "ETH", "LTC", "XRP", "BCH", "QTUM", "PPT", "ZB", "TRX", "NEO", "BNB", "DASH", "ZEC", "ADA", "OKB", "BGG", "MANA", "ETC", "XLM", "CELR", "OMG", "HT", "BSV", "ONT", "XMR", "WABI", "USDT", "RVN", "FET", "TCH", "GXS", "BAT", "EVX", "ABT", "PAX", "BTS", "TRUE", "XEM", "AE", "NULS"})
+        public Crypto crypto;
+
+        public Crypto getCrypto() {
+            return crypto;
+        }
+
+        public class Crypto {
+            @SerializedName(value = "USD", alternate = {"EUR", "RUB", "JPY", "GBP", "CHF", "CAD", "AUD", "CNY", "HKD", "NOK", "SGD", "RON"})
+            public Coin cryptoCurrency;
+
+            public Coin getCryptoCurrency() {
+                return cryptoCurrency;
+            }
+
+            public class Coin {
+                private String nameCoin;
+                private Double countCoin;
+                private String FROMSYMBOL;
+                private String TOSYMBOL;
+                private String PRICE;
+                private String CHANGEDAY;
+                private String HIGHDAY;
+                private String LOWDAY;
+                private String OPENDAY;
+                private String MKTCAP;
+                private String SUPPLY;
+                private String CHANGEPCTDAY;
+                private String VOLUME24HOUR;
+                private String IMAGEURL;
+                private String MARKET;
+
+                public String getTOSYMBOL() {
+                    return TOSYMBOL;
+                }
+
+                public String getNameCoin() {
+                    return nameCoin;
+                }
+
+                public void setNameCoin(String nameCoin) {
+                    this.nameCoin = nameCoin;
+                }
+
+                public void setCountCoin(Double countCoin) {
+                    this.countCoin = countCoin;
+                }
+
+                public Double getCountCoin() {
+                    return countCoin;
+                }
 
                 public String getMARKET() {
                     return MARKET;

@@ -41,9 +41,9 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
     private FloatingActionButton mAddCurrencyFAB;
     private RecyclerView mRecyclerView;
     private WalletAdapter mAdapter;
-    private List<CryptoCoinFullInfo> mFavoriteList;
+    private List<CryptoCoinFullInfo> mFullList;
     private List<String> coinListName;
-    private List<CoinWithCount> mCoinList;
+    // private List<CoinWithCount> mCoinList;
     private WalletPresenter walletPresenter;
 
     @Nullable
@@ -57,8 +57,10 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
         super.onViewCreated(view, savedInstanceState);
         initView(view);
 
-        mCoinList = new ArrayList<>();
+        //mCoinList = new ArrayList<>();
         coinListName = new ArrayList<>();
+        mFullList = new ArrayList<>();
+
         mAddCurrencyFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,9 +70,15 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
         walletPresenter = new WalletPresenter(new WalletInteractorImpl(new WalletRepositoryImpl(new WebDataStoreImpl(), new DbDataStoreImpl(getContext()))));
         walletPresenter.attachView(this);
         initRecyclerView();
-        walletPresenter.loadCoin();
-        walletPresenter.loadNewsList(coinListName);
+
+        updateFragment();
+
     }
+
+    public void updateFragment() {
+        walletPresenter.loadCoin();
+    }
+
 
     public void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -78,7 +86,7 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
         mRecyclerView.setLayoutManager(layoutManager);
 
         mAdapter = new WalletAdapter(getContext());
-        mAdapter.setListNews(mCoinList);
+        mAdapter.setListFull(mFullList);
         mRecyclerView.setAdapter(mAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
@@ -109,11 +117,7 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
             Log.d("UPDATE", "true");
             dbManager.updateCurrency(name, count);
         }
-
-        mCoinList.clear();
-        coinListName.clear();
         walletPresenter.loadCoin();
-        mAdapter.notifyDataSetChanged();
     }
 
     public void initView(View view) {
@@ -122,21 +126,12 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
     }
 
     @Override
-    public void setData(CryptoCoinFullInfo newsList) {
-        //mAdapter;
-
-    }
-
-    @Override
-    public void setDataWallet(List<CoinWithCount> list) {
-        mCoinList = list;
-        for (int i = 0; i < list.size(); i++)
-            coinListName.add(list.get(i).getCoin());
-
-
-        mAdapter.setListNews(list);
+    public void setData(List<CryptoCoinFullInfo> newsList) {
+        mAdapter.setListFull(newsList);
+        mFullList=newsList;
+        for (int i = 0; i < newsList.size(); i++)
+            coinListName.add(newsList.get(i).display.crypto.cryptoCurrency.getNameCoin());
         mAdapter.notifyDataSetChanged();
-
     }
 
     @Override
@@ -147,10 +142,10 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         if (viewHolder instanceof WalletAdapter.ViewHolder) {
-            CoinWithCount item = mCoinList.get(viewHolder.getAdapterPosition());
+            CryptoCoinFullInfo item = mFullList.get(viewHolder.getAdapterPosition());
 
             DbManagerPersonal dbManager = DbManagerPersonal.getInstance(getContext());
-            dbManager.deleteNote(item.getCoin());
+            dbManager.deleteNote(item.display.crypto.cryptoCurrency.getNameCoin());
 
             int deleteIndex = viewHolder.getAdapterPosition();
             mAdapter.removeCoin(deleteIndex);

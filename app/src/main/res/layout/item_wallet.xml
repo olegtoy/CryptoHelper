@@ -26,26 +26,70 @@
         android:layout_height="match_parent"
         android:background="@android:color/white">
 
-         <ImageView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:id="@+id/imageCoin"
-             />
-        <TextView
-            android:id="@+id/countCoin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nameCount" />
+        <ImageView
+            android:id="@+id/imageCoin"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"/>
+
 
         <TextView
             android:id="@+id/nameCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/imageCoin"/>
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/imageCoin" />
+
+        <TextView
+            android:id="@+id/countCoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@+id/nameCount"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate"
+            android:id="@+id/rate_tv"
+            android:layout_below="@id/nameCount"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/price_tv"
+            android:layout_toRightOf="@id/rate_tv"
+            android:layout_alignTop="@+id/rate_tv"
+            android:textSize="15sp"
+            android:layout_marginLeft="3dp"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sum"
+            android:id="@+id/sum_tv_text"
+            android:layout_below="@id/rate_tv"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sum_tv"
+            android:layout_toRightOf="@id/sum_tv_text"
+            android:layout_alignTop="@+id/sum_tv_text"
+            android:textSize="15sp"
+            android:layout_marginLeft="3dp"
+
+            />
+
     </RelativeLayout>
-
-
-
 
 
 </FrameLayout>

@@ -17,17 +17,10 @@ import android.widget.Spinner;
 import com.practice.olegtojgildin.crypto.R;
 import com.practice.olegtojgildin.crypto.data.datastore.WebDataStoreImpl;
 import com.practice.olegtojgildin.crypto.data.models.convert.SinglePrice;
-import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
 import com.practice.olegtojgildin.crypto.data.models.news.NewsList;
 import com.practice.olegtojgildin.crypto.data.repositories.ConvertRepositoryImpl;
-import com.practice.olegtojgildin.crypto.data.repositories.NewsRepositoryImpl;
 import com.practice.olegtojgildin.crypto.domain.convert.ConvertorInteractorImpl;
-import com.practice.olegtojgildin.crypto.domain.news.NewsInteractorImpl;
 import com.practice.olegtojgildin.crypto.presentation.presenter.ConvertPresenter;
-import com.practice.olegtojgildin.crypto.presentation.presenter.NewsPresenter;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by olegtojgildin on 26/03/2019.
@@ -68,7 +61,7 @@ public class ConvertFragment extends Fragment implements ConvertView{
 
         convertPresenter=new ConvertPresenter(new ConvertorInteractorImpl(new ConvertRepositoryImpl(new WebDataStoreImpl())));
         convertPresenter.attachView(this);
-        convertPresenter.loadNewsList(mFrom,mTo);
+        convertPresenter.loadSinglePrice(mFrom,mTo);
     }
 
 
@@ -80,7 +73,7 @@ public class ConvertFragment extends Fragment implements ConvertView{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 mTo = (String) adapterView.getItemAtPosition(i);
-                convertPresenter.loadNewsList(mFrom,mTo);
+                convertPresenter.loadSinglePrice(mFrom,mTo);
             }
 
             @Override
@@ -96,7 +89,7 @@ public class ConvertFragment extends Fragment implements ConvertView{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 mFrom = (String) adapterView.getItemAtPosition(i);
-                convertPresenter.loadNewsList(mFrom,mTo);
+                convertPresenter.loadSinglePrice(mFrom,mTo);
             }
 
             @Override
@@ -123,7 +116,7 @@ public class ConvertFragment extends Fragment implements ConvertView{
                 } catch (NumberFormatException ex) {
                     Log.d("Exeption", ex.getMessage());
                 }
-                convertPresenter.loadNewsList(mFrom,mTo);
+                convertPresenter.loadSinglePrice(mFrom,mTo);
             }
         });
     }

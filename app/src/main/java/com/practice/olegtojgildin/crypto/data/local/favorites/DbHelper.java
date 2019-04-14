@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.data.local;
+package com.practice.olegtojgildin.crypto.data.local.favorites;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

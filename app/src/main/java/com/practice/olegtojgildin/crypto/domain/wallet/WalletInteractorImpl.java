@@ -1,8 +1,7 @@
 package com.practice.olegtojgildin.crypto.domain.wallet;
 
-import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.CoinWithCount;
+import com.practice.olegtojgildin.crypto.data.local.wallet.CoinWithCount;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
-import com.practice.olegtojgildin.crypto.domain.favorites.FavoritesRepository;
 
 import java.util.List;
 

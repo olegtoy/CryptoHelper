@@ -1,7 +1,7 @@
 package com.practice.olegtojgildin.crypto.data.repositories;
 
 import com.practice.olegtojgildin.crypto.data.datastore.WebDataStore;
-import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.CoinWithCount;
+import com.practice.olegtojgildin.crypto.data.local.wallet.CoinWithCount;
 import com.practice.olegtojgildin.crypto.data.local.dataStore.DbDataStore;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
 import com.practice.olegtojgildin.crypto.domain.wallet.WalletRepository;

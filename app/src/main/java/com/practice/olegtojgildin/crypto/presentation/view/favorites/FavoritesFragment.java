@@ -18,41 +18,20 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.practice.olegtojgildin.crypto.MainActivity;
 import com.practice.olegtojgildin.crypto.R;
 import com.practice.olegtojgildin.crypto.data.datastore.WebDataStoreImpl;
-import com.practice.olegtojgildin.crypto.data.local.DbManager;
-import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.CoinWithCount;
-import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.DbManagerPersonal;
+import com.practice.olegtojgildin.crypto.data.local.favorites.DbManager;
 import com.practice.olegtojgildin.crypto.data.local.dataStore.DbDataStoreImpl;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
-import com.practice.olegtojgildin.crypto.data.models.topCurrency.TopCoin;
-import com.practice.olegtojgildin.crypto.data.repositories.ConvertRepositoryImpl;
 import com.practice.olegtojgildin.crypto.data.repositories.FavoritesRepositoryImpl;
-import com.practice.olegtojgildin.crypto.data.repositories.NewsRepositoryImpl;
-import com.practice.olegtojgildin.crypto.data.repositories.TopCurrencyRepositoryImpl;
-import com.practice.olegtojgildin.crypto.domain.convert.ConvertorInteractorImpl;
 import com.practice.olegtojgildin.crypto.domain.favorites.FavoritesInteractorImpl;
-import com.practice.olegtojgildin.crypto.domain.news.NewsInteractorImpl;
-import com.practice.olegtojgildin.crypto.domain.topCurrency.TopCurrencyInteractor;
-import com.practice.olegtojgildin.crypto.domain.topCurrency.TopCurrencyInteractorImpl;
 import com.practice.olegtojgildin.crypto.presentation.presenter.FavoritesPresenter;
-import com.practice.olegtojgildin.crypto.presentation.presenter.NewsPresenter;
 import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.RecyclerItemTouchHelperListener;
-import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.WalletAdapter;
-import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.WalletItemTouchHelper;
-import com.practice.olegtojgildin.crypto.presentation.view.selectCurrency.CurrencyListAdapterSelect;
 import com.practice.olegtojgildin.crypto.presentation.view.selectCurrency.SelectCurrencyActivity;
 import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyDetailFragment;
-import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyFragment;
-import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.Scheduler;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by olegtojgildin on 26/03/2019.
@@ -64,7 +43,7 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
     private FavoritesAdapter mAdapter;
     private List<CryptoCoinFullInfo> mFavoriteList;
     private List<String> mFavoriteListString;
-    private FavoritesPresenter newsPresenter;
+    private FavoritesPresenter favoritesPresenter;
     private Spinner mSpinnerCategory;
     public String mCoin="USD";
 
@@ -89,11 +68,9 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
                 startActivityForResult(SelectCurrencyActivity.newIntent(getContext()), 1);
             }
         });
-        newsPresenter = new FavoritesPresenter(new FavoritesInteractorImpl(new FavoritesRepositoryImpl(new WebDataStoreImpl(),new DbDataStoreImpl(getContext()))));
-        newsPresenter.attachView(this);
+        favoritesPresenter = new FavoritesPresenter(new FavoritesInteractorImpl(new FavoritesRepositoryImpl(new WebDataStoreImpl(),new DbDataStoreImpl(getContext()))));
+        favoritesPresenter.attachView(this);
         initRecyclerView();
-       // newsPresenter.loadCoin();
-
         initSpinnner();
 
         mAdapter.setOnClickListener(new FavoritesAdapter.OnClickListener() {
@@ -114,7 +91,7 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
                 mCoin=(String) adapterView.getItemAtPosition(i);
                 mFavoriteListString.clear();
                 mFavoriteList.clear();
-                newsPresenter.loadCoin();
+                favoritesPresenter.loadCoin();
             }
 
             @Override
@@ -162,7 +139,7 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
         dbManager.addCurrency(name);
         mFavoriteListString.clear();
         mFavoriteList.clear();
-        newsPresenter.loadCoin();
+        favoritesPresenter.loadCoin();
     }
 
     public void initView(View view) {
@@ -176,8 +153,6 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
     @Override
     public void setData(CryptoCoinFullInfo newsList) {
         mFavoriteList.add(newsList);
-
-        Log.d("SIZE",Integer.toString(mFavoriteList.size()));
         mAdapter.setListNews(mFavoriteList);
         mAdapter.notifyDataSetChanged();
     }
@@ -185,9 +160,7 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
     @Override
     public void setDataFavoriteList(List<String> list) {
         mFavoriteListString = list;
-        Log.d("SIZE0",Integer.toString(mFavoriteListString.size()));
-
-        newsPresenter.loadNewsList(mFavoriteListString, mCoin);
+        favoritesPresenter.loadFavorites(mFavoriteListString, mCoin);
         mAdapter.notifyDataSetChanged();
     }
 

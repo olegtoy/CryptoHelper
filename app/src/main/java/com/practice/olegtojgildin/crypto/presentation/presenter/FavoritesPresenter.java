@@ -26,8 +26,7 @@ public class FavoritesPresenter {
         this.favoritesView = view;
     }
 
-    public void loadNewsList(List<String> listFav,String toSymbol) {
-        Log.d("SIZE2",Integer.toString(listFav.size()));
+    public void loadFavorites(List<String> listFav, String toSymbol) {
         for (int i = 0; i < listFav.size(); i++) {
             favoritesInteractor.getCoinsInfo(listFav.get(i), toSymbol)
                     .subscribeOn(Schedulers.newThread())

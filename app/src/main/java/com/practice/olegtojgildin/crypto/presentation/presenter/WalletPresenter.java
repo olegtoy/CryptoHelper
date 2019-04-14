@@ -2,7 +2,7 @@ package com.practice.olegtojgildin.crypto.presentation.presenter;
 
 import android.util.Log;
 
-import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.CoinWithCount;
+import com.practice.olegtojgildin.crypto.data.local.wallet.CoinWithCount;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
 import com.practice.olegtojgildin.crypto.domain.wallet.WalletInteractor;
 import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.WalletView;
@@ -37,7 +37,7 @@ public class WalletPresenter {
     public List<CoinWithCount> coinWithCountList;
     public List<CryptoCoinFullInfo> cryptoCoinFullInfos;
 
-    private void loadNewsList(List<CoinWithCount> listFav, String mCoin) {
+    private void loadFullInfo(List<CoinWithCount> listFav, String mCoin) {
 
 
         for (int i = 0; i < listFav.size(); i++) {
@@ -104,7 +104,7 @@ public class WalletPresenter {
                     public void onComplete() {
 
                         Log.d("SIZEcount", Integer.toString(coinWithCountList.size()));
-                        loadNewsList(coinWithCountList,mCoin);
+                        loadFullInfo(coinWithCountList,mCoin);
                     }
                 });
     }

@@ -24,7 +24,7 @@ public class ConvertPresenter {
         this.convertView = view;
     }
 
-    public void loadNewsList(String from, String to) {
+    public void loadSinglePrice(String from, String to) {
         convertInteractor.getSinglePrice(from, to)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

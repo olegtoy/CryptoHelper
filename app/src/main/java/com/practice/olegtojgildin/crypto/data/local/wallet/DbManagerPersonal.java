@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.data.local.PersonalFinance;
+package com.practice.olegtojgildin.crypto.data.local.wallet;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
-
-import com.practice.olegtojgildin.crypto.data.local.DbHelper;
 
 import java.util.ArrayList;
 import java.util.List;

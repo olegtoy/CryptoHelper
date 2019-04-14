@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.data.local.PersonalFinance;
+package com.practice.olegtojgildin.crypto.data.local.wallet;
 
 /**
  * Created by olegtojgildin on 12/04/2019.

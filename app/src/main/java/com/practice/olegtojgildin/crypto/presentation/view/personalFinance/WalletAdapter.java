@@ -9,10 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
-import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.CoinWithCount;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
-import com.practice.olegtojgildin.crypto.presentation.view.favorites.FavoritesAdapter;
-import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyListAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

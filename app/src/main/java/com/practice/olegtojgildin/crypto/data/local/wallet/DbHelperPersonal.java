@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.data.local.PersonalFinance;
+package com.practice.olegtojgildin.crypto.data.local.wallet;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

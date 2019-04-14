@@ -2,10 +2,9 @@ package com.practice.olegtojgildin.crypto.data.local.dataStore;
 
 import android.content.Context;
 
-import com.practice.olegtojgildin.crypto.data.local.DbHelper;
-import com.practice.olegtojgildin.crypto.data.local.DbManager;
-import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.CoinWithCount;
-import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.DbManagerPersonal;
+import com.practice.olegtojgildin.crypto.data.local.favorites.DbManager;
+import com.practice.olegtojgildin.crypto.data.local.wallet.CoinWithCount;
+import com.practice.olegtojgildin.crypto.data.local.wallet.DbManagerPersonal;
 
 import java.util.List;
 

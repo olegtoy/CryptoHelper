@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.data.local;
+package com.practice.olegtojgildin.crypto.data.local.favorites;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.Single;
 
 /**
  * Created by olegtojgildin on 08/04/2019.

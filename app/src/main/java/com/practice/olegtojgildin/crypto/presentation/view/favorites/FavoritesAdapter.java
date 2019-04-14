@@ -2,6 +2,7 @@ package com.practice.olegtojgildin.crypto.presentation.view.favorites;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
-import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoin;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
-import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCurrency;
-import com.practice.olegtojgildin.crypto.data.models.topCurrency.TopCoin;
-import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyListAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -23,7 +20,7 @@ import java.util.List;
  */
 
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
-    private CurrencyListAdapter.OnClickListener mOnClickListener;
+    private FavoritesAdapter.OnClickListener mOnClickListener;
     private List<CryptoCoinFullInfo> mCurrencyList;
     private Context mContext;
 
@@ -31,7 +28,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
         this.mContext = context;
     }
 
-    public void setOnClickListener(CurrencyListAdapter.OnClickListener onListener) {
+    public void setOnClickListener(FavoritesAdapter.OnClickListener onListener) {
         this.mOnClickListener = onListener;
     }
 
@@ -41,7 +38,10 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
     }
 
     public void setListNews(List<CryptoCoinFullInfo> list) {
+        Log.d("SIZE3",Integer.toString(list.size()));
+
         mCurrencyList = list;
+        notifyDataSetChanged();
     }
 
     public CryptoCoinFullInfo getCoinItem(int position) {
@@ -63,11 +63,12 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
     public void onBindViewHolder(FavoritesAdapter.ViewHolder viewHolder, int position) {
         CryptoCoinFullInfo topCoin = getCoinItem(position);
         CryptoCoinFullInfo.Display.Crypto.Coin cryptoCoin = topCoin.display.crypto.cryptoCurrency;
-        viewHolder.tvSymbol.setText(cryptoCoin.getFROMSYMBOL());
-        viewHolder.tvName.setText(cryptoCoin.getFROMSYMBOL());
+        CryptoCoinFullInfo.Raw.Crypto.Coin raw = topCoin.raw.crypto.cryptoCurrency;
+
+        viewHolder.tvSymbol.setText(raw.getFROMSYMBOL());
         viewHolder.tvPrice.setText(cryptoCoin.getPRICE());
-        viewHolder.tvChange.setText(cryptoCoin.getCHANGEPCTDAY()+ " %");
-        viewHolder.tvAlgorithm.setText(cryptoCoin.getMARKET());
+        viewHolder.tvChange.setText(cryptoCoin.getCHANGEPCT24HOUR()+ " %");
+        viewHolder.tvAlgorithm.setText(raw.getMARKET());
         Picasso.get()
                 .load(cryptoCoin.getIMAGEURL())
                 .placeholder(R.drawable.ic_launcher_background)
@@ -77,25 +78,21 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvSymbol;
-        TextView tvName;
         TextView tvPrice;
         TextView tvChange;
         TextView tvAlgorithm;
-        TextView tvProofType;
         View viewBackground,viewForeground;
 
         ImageView ivImage;
-        CurrencyListAdapter.OnClickListener ocListener;
+        FavoritesAdapter.OnClickListener ocListener;
 
-        public ViewHolder(View view, CurrencyListAdapter.OnClickListener ocListener) {
+        public ViewHolder(View view, FavoritesAdapter.OnClickListener ocListener) {
             super(view);
             ivImage = view.findViewById(R.id.iv_image);
             tvSymbol = view.findViewById(R.id.tv_symbol);
-            tvName = view.findViewById(R.id.tv_name);
             tvPrice = view.findViewById(R.id.tv_price);
             tvChange = view.findViewById(R.id.tv_changeValue);
             tvAlgorithm = view.findViewById(R.id.tv_algorithm);
-            tvProofType = view.findViewById(R.id.tv_proofType);
             viewBackground=view.findViewById(R.id.view_bachground1);
             viewForeground=view.findViewById(R.id.view_foreground1);
 

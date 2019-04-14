@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.practice.olegtojgildin.crypto.MainActivity;
 import com.practice.olegtojgildin.crypto.R;
@@ -39,6 +43,9 @@ import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.Walle
 import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.WalletItemTouchHelper;
 import com.practice.olegtojgildin.crypto.presentation.view.selectCurrency.CurrencyListAdapterSelect;
 import com.practice.olegtojgildin.crypto.presentation.view.selectCurrency.SelectCurrencyActivity;
+import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyDetailFragment;
+import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyFragment;
+import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +65,9 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
     private List<CryptoCoinFullInfo> mFavoriteList;
     private List<String> mFavoriteListString;
     private FavoritesPresenter newsPresenter;
+    private Spinner mSpinnerCategory;
+    public String mCoin="USD";
+
 
     @Nullable
     @Override
@@ -70,6 +80,7 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
         super.onViewCreated(view, savedInstanceState);
         initView(view);
 
+
         mFavoriteList = new ArrayList<>();
         mFavoriteListString = new ArrayList<>();
         mAddCurrencyFAB.setOnClickListener(new View.OnClickListener() {
@@ -81,11 +92,45 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
         newsPresenter = new FavoritesPresenter(new FavoritesInteractorImpl(new FavoritesRepositoryImpl(new WebDataStoreImpl(),new DbDataStoreImpl(getContext()))));
         newsPresenter.attachView(this);
         initRecyclerView();
-        newsPresenter.loadCoin();
+       // newsPresenter.loadCoin();
 
+        initSpinnner();
+
+        mAdapter.setOnClickListener(new FavoritesAdapter.OnClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                FavoritesFragment.this.openDetailCurrency(mFavoriteList.get(position));
+            }
+        });
+
+    }
+    public void initSpinnner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.coin, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerCategory.setAdapter(adapter);
+        mSpinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                mCoin=(String) adapterView.getItemAtPosition(i);
+                mFavoriteListString.clear();
+                mFavoriteList.clear();
+                newsPresenter.loadCoin();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
 
+    private void openDetailCurrency(CryptoCoinFullInfo topCoin){
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, CurrencyDetailFragment.newInstance1(topCoin.raw.crypto.cryptoCurrency.getFROMSYMBOL(),"USD"));
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
     public void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setAutoMeasureEnabled(false);
@@ -123,12 +168,16 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
     public void initView(View view) {
         mAddCurrencyFAB = (FloatingActionButton) view.findViewById(R.id.fabAddCurrency);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_favorites);
+        mSpinnerCategory = view.findViewById(R.id.coin_spinner_fav);
+
     }
 
 
     @Override
     public void setData(CryptoCoinFullInfo newsList) {
         mFavoriteList.add(newsList);
+
+        Log.d("SIZE",Integer.toString(mFavoriteList.size()));
         mAdapter.setListNews(mFavoriteList);
         mAdapter.notifyDataSetChanged();
     }
@@ -136,7 +185,9 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
     @Override
     public void setDataFavoriteList(List<String> list) {
         mFavoriteListString = list;
-        newsPresenter.loadNewsList(mFavoriteListString);
+        Log.d("SIZE0",Integer.toString(mFavoriteListString.size()));
+
+        newsPresenter.loadNewsList(mFavoriteListString, mCoin);
         mAdapter.notifyDataSetChanged();
     }
 

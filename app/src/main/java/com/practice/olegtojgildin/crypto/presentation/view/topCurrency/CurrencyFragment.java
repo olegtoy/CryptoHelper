@@ -37,7 +37,7 @@ public class CurrencyFragment extends Fragment implements TopCurrencyView {
     private CurrencyListAdapter mCurrencyAdapter;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private Spinner mSpinnerCategory;
-    private String mCoin = "RUB";
+    private String mCoin = "USD";
     private TopCurrencyPresenter topCurrencyPresenter;
 
     @Nullable
@@ -63,7 +63,12 @@ public class CurrencyFragment extends Fragment implements TopCurrencyView {
     public void initListener() {
         mSwipeRefreshLayout.setOnRefreshListener(() -> updateActivity());
 
-        mCurrencyAdapter.setOnClickListener((view, position) -> openDetailCurrency(mCurrencyList.get(position)));
+        mCurrencyAdapter.setOnClickListener(new CurrencyListAdapter.OnClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                CurrencyFragment.this.openDetailCurrency(mCurrencyList.get(position));
+            }
+        });
     }
 
     public void initSpinnner() {

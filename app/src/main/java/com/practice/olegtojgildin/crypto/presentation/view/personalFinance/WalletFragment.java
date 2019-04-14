@@ -13,22 +13,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
 import com.practice.olegtojgildin.crypto.data.datastore.WebDataStoreImpl;
-import com.practice.olegtojgildin.crypto.data.local.DbManager;
-import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.CoinWithCount;
 import com.practice.olegtojgildin.crypto.data.local.PersonalFinance.DbManagerPersonal;
 import com.practice.olegtojgildin.crypto.data.local.dataStore.DbDataStoreImpl;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
-import com.practice.olegtojgildin.crypto.data.repositories.FavoritesRepositoryImpl;
 import com.practice.olegtojgildin.crypto.data.repositories.WalletRepositoryImpl;
-import com.practice.olegtojgildin.crypto.domain.favorites.FavoritesInteractorImpl;
 import com.practice.olegtojgildin.crypto.domain.wallet.WalletInteractorImpl;
-import com.practice.olegtojgildin.crypto.presentation.presenter.FavoritesPresenter;
 import com.practice.olegtojgildin.crypto.presentation.presenter.WalletPresenter;
-import com.practice.olegtojgildin.crypto.presentation.view.favorites.FavoritesAdapter;
-import com.practice.olegtojgildin.crypto.presentation.view.selectCurrency.SelectCurrencyActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +42,11 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
     private List<String> coinListName;
     // private List<CoinWithCount> mCoinList;
     private WalletPresenter walletPresenter;
+    private Spinner mSpinnerCategory;
+    private String mCoin = "USD";
+    private TextView mSumWallet_tv;
+    private double mSumWallet;
+
 
     @Nullable
     @Override
@@ -71,12 +73,31 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
         walletPresenter.attachView(this);
         initRecyclerView();
 
-        updateFragment();
+        initSpinnner();
+        //updateFragment();
 
     }
 
+    public void initSpinnner() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.coin, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerCategory.setAdapter(adapter);
+        mSpinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                mCoin = (String) adapterView.getItemAtPosition(i);
+                updateFragment();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
     public void updateFragment() {
-        walletPresenter.loadCoin();
+        walletPresenter.loadCoin(mCoin);
     }
 
 
@@ -117,20 +138,31 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
             Log.d("UPDATE", "true");
             dbManager.updateCurrency(name, count);
         }
-        walletPresenter.loadCoin();
+        walletPresenter.loadCoin(mCoin);
     }
 
     public void initView(View view) {
         mAddCurrencyFAB = (FloatingActionButton) view.findViewById(R.id.fabAddInWallet);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_wallet);
+        mSpinnerCategory = view.findViewById(R.id.wallet_spinner);
+        mSumWallet_tv =view.findViewById(R.id.sum_Wallet);
     }
 
     @Override
     public void setData(List<CryptoCoinFullInfo> newsList) {
         mAdapter.setListFull(newsList);
-        mFullList=newsList;
+        mFullList = newsList;
+        mSumWallet=0;
         for (int i = 0; i < newsList.size(); i++)
+        {
             coinListName.add(newsList.get(i).display.crypto.cryptoCurrency.getNameCoin());
+            CryptoCoinFullInfo cryptoCoinFullInfo = newsList.get(i);
+            double count = cryptoCoinFullInfo.display.crypto.cryptoCurrency.getCountCoin();
+            double price = Double.parseDouble(cryptoCoinFullInfo.raw.crypto.cryptoCurrency.getPRICE());
+            mSumWallet+=count*price;
+        }
+        mSumWallet_tv.setText(String.format("%.2f",mSumWallet)+ " " +mCoin);
+
         mAdapter.notifyDataSetChanged();
     }
 
@@ -148,6 +180,12 @@ public class WalletFragment extends Fragment implements WalletView, RecyclerItem
             dbManager.deleteNote(item.display.crypto.cryptoCurrency.getNameCoin());
 
             int deleteIndex = viewHolder.getAdapterPosition();
+
+            double count = item.display.crypto.cryptoCurrency.getCountCoin();
+            double price = Double.parseDouble(item.raw.crypto.cryptoCurrency.getPRICE());
+            mSumWallet-=count*price;
+            mSumWallet_tv.setText(String.format("%.2f",mSumWallet)+ " " +mCoin);
+
             mAdapter.removeCoin(deleteIndex);
 
         }

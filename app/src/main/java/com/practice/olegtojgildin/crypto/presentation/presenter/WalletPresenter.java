@@ -37,14 +37,14 @@ public class WalletPresenter {
     public List<CoinWithCount> coinWithCountList;
     public List<CryptoCoinFullInfo> cryptoCoinFullInfos;
 
-    private void loadNewsList(List<CoinWithCount> listFav) {
+    private void loadNewsList(List<CoinWithCount> listFav, String mCoin) {
 
 
         for (int i = 0; i < listFav.size(); i++) {
             double count = coinWithCountList.get(i).getCount();
             String coin = coinWithCountList.get(i).getCoin();
 
-            walletInteractor.getCoinsInfo(listFav.get(i).getCoin(), "USD")
+            walletInteractor.getCoinsInfo(listFav.get(i).getCoin(), mCoin)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<CryptoCoinFullInfo>() {
@@ -78,7 +78,7 @@ public class WalletPresenter {
 
     }
 
-    public void loadCoin() {
+    public void loadCoin(String mCoin) {
         walletInteractor.getCoinWithCount()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -104,7 +104,7 @@ public class WalletPresenter {
                     public void onComplete() {
 
                         Log.d("SIZEcount", Integer.toString(coinWithCountList.size()));
-                        loadNewsList(coinWithCountList);
+                        loadNewsList(coinWithCountList,mCoin);
                     }
                 });
     }

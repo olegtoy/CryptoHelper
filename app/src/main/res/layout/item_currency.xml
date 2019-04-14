@@ -22,8 +22,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:textSize="16sp"
-        android:text=" - " />
+        android:text=" - "
+        style="@style/PrimaryText"/>
 
     <TextView
         android:id="@+id/tv_name"
@@ -32,8 +32,8 @@
         android:layout_alignTop="@id/iv_image"
         android:layout_marginStart="10dp"
         android:layout_marginTop="35dp"
-        android:textSize="14sp"
-        android:text=" - " />
+        android:text=" - "
+        style="@style/SecondaryText"/>
 
     <TextView
         android:id="@+id/tv_algorithm"
@@ -42,8 +42,8 @@
         android:layout_alignParentTop="true"
         android:text=" - "
         android:layout_marginTop="15dp"
-        android:textSize="12sp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        style="@style/SecondaryText"/>
 
     <TextView
         android:id="@+id/tv_proofType"
@@ -52,8 +52,8 @@
         android:layout_alignTop="@id/tv_algorithm"
         android:text=" - "
         android:paddingTop="25dp"
-        android:textSize="12sp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        style="@style/SecondaryText"/>
 
     <TextView
         android:id="@+id/tv_price"
@@ -63,8 +63,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="15dp"
-        android:textSize="14sp"
-        android:text=" - " />
+        android:text=" - "
+        style="@style/SecondaryText"/>
 
     <TextView
         android:id="@+id/tv_changeValue"
@@ -74,7 +74,7 @@
         android:layout_alignBottom="@id/tv_name"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="5dp"
-        android:textSize="14sp"
-        android:text=" - "/>
+        android:text=" - "
+        style="@style/SecondaryText"/>
 
 </RelativeLayout>

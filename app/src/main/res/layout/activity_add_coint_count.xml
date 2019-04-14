@@ -3,23 +3,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/name_tv"
+        style="@style/PrimaryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Сurrency" />
+
     <Spinner
         android:id="@+id/wallet_add_coin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:layout_alignTop="@id/name_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/name_tv" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/countAdd"
-        android:layout_below="@+id/wallet_add_coin"/>
-    <Button
+    <TextView
+        android:id="@+id/count_tv"
+        style="@style/PrimaryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/countAdd"
-        android:text="ADD"
+        android:layout_alignLeft="@id/name_tv"
+        android:layout_below="@id/name_tv"
+        android:layout_margin="10dp"
+        android:text="Amount" />
+
+    <EditText
+        android:id="@+id/countAdd"
+        style="@style/PrimaryText"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/count_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/count_tv" />
+
+    <Button
         android:id="@+id/buttonAddtoWallet"
+        style="@style/PrimaryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/count_tv"
+
+        android:layout_below="@id/count_tv"
+        android:layout_centerHorizontal="true"
+        android:text="ADD"
+
         />
 
 </RelativeLayout>

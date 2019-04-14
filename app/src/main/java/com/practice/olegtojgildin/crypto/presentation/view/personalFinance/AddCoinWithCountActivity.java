@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -68,11 +69,18 @@ public class AddCoinWithCountActivity extends AppCompatActivity {
         mAddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra("name", nameCoin);
-                intent.putExtra("count", Double.parseDouble(countCoin.getText().toString()));
-                setResult(RESULT_OK, intent);
-                finish();
+                try {
+                    Intent intent = new Intent();
+                    intent.putExtra("name", nameCoin);
+                    if (countCoin.getText() != null)
+                        intent.putExtra("count", Double.parseDouble(countCoin.getText().toString()));
+                    else
+                        intent.putExtra("count", 0.0);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                } catch (NumberFormatException ex) {
+                    Log.d("error", ex.getMessage().toString());
+                }
             }
         });
     }

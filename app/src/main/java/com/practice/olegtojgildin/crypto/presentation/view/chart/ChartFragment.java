@@ -23,8 +23,6 @@ import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
 import com.practice.olegtojgildin.crypto.data.models.CryptoHistoryPoint;
 import com.practice.olegtojgildin.crypto.data.models.HistoryList;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
-import com.practice.olegtojgildin.crypto.data.models.topCurrency.TopCoin;
-import com.practice.olegtojgildin.crypto.presentation.view.topCurrency.CurrencyDetailFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -88,8 +86,8 @@ public class ChartFragment extends Fragment {
         CryptoCoinFullInfo.Display.Crypto.Coin coin = cryptoCoinFullInfo.getDisplay().getCrypto().getCryptoCurrency();
         tvPrice.setText(coin.getPRICE());
         tvName.setText(fromSymbol);
-        tvHigh.setText(coin.getHIGHDAY());
-        tvLow.setText(coin.getLOWDAY());
+        tvHigh.setText(coin.getHIGH24HOUR());
+        tvLow.setText(coin.getLOW24HOUR());
         Picasso.get()
                 .load(coin.getIMAGEURL())
                 .placeholder(R.drawable.ic_launcher_background)

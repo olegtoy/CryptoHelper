@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
@@ -15,6 +16,7 @@ import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.TopCoin;
 import com.practice.olegtojgildin.crypto.presentation.view.chart.ChartFragment;
+import com.squareup.picasso.Picasso;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -38,6 +40,7 @@ public class CurrencyDetailFragment extends Fragment {
     private TextView mOpen;
     private TextView mMarketCap;
     private TextView mSupply;
+    private ImageView imageView;
     private Button mOpenChart;
 
     @Override
@@ -68,17 +71,22 @@ public class CurrencyDetailFragment extends Fragment {
 
     public void putCoinInfo(CryptoCoinFullInfo cryptoCoinFullInfo) {
         CryptoCoinFullInfo.Display.Crypto.Coin coin = cryptoCoinFullInfo.getDisplay().getCrypto().getCryptoCurrency();
-        mChange.setText(coin.getCHANGEPCTDAY() + "%");
+        mChange.setText(coin.getCHANGEPCT24HOUR() + "%");
         mPrice.setText(coin.getPRICE());
         mName.setText(fromSymbol);
-        mChanges.setText(coin.getCHANGEDAY());
+        mChanges.setText(coin.getCHANGE24HOUR());
         mVolume.setText(coin.getVOLUME24HOUR());
-        mHigh.setText(coin.getHIGHDAY());
-        mLow.setText(coin.getLOWDAY());
+        mHigh.setText(coin.getHIGH24HOUR());
+        mLow.setText(coin.getLOW24HOUR());
         mOpen.setText(coin.getOPENDAY());
         mMarketCap.setText(coin.getMKTCAP());
         mSupply.setText(coin.getSUPPLY());
         setColor();
+        Picasso.get()
+                .load(coin.getIMAGEURL())
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_foreground)
+                .into(imageView);
 
     }
 
@@ -94,6 +102,7 @@ public class CurrencyDetailFragment extends Fragment {
         mMarketCap = view.findViewById(R.id.tv_marketCap);
         mSupply = view.findViewById(R.id.tv_supply);
         mOpenChart=view.findViewById(R.id.openChart);
+        imageView=view.findViewById(R.id.iv_image);
     }
 
     public void initListener(){
@@ -110,8 +119,8 @@ public class CurrencyDetailFragment extends Fragment {
 
     public void setColor() {
         if (mChange.getText().charAt(0) == '-')
-            mChange.setTextColor(getResources().getColor(R.color.colorAccent));
-        else mChange.setTextColor(getResources().getColor(R.color.colorPrimary));
+            mChange.setTextColor(getResources().getColor(R.color.colorNegative));
+        else mChange.setTextColor(getResources().getColor(R.color.colorPositive));
 
     }
 
@@ -127,6 +136,15 @@ public class CurrencyDetailFragment extends Fragment {
         Bundle args = new Bundle();
         args.putString("to", toCoin);
         args.putString("from", topCoin.cryptoCoin.getName());
+        CurrencyDetailFragment fragment = new CurrencyDetailFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static CurrencyDetailFragment newInstance1(String fromSymbol, String toSymbol) {
+        Bundle args = new Bundle();
+        args.putString("to", toSymbol);
+        args.putString("from", fromSymbol);
         CurrencyDetailFragment fragment = new CurrencyDetailFragment();
         fragment.setArguments(args);
         return fragment;

@@ -10,7 +10,6 @@
         android:id="@+id/rl_description"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/colorPrimary"
         android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -22,7 +21,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            style="@style/PrimaryText"/>
 
         <TextView
             android:id="@+id/tv_name"
@@ -33,7 +33,7 @@
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/iv_image"
             android:text=" - "
-            android:textSize="16sp" />
+            style="@style/PrimaryText" />
 
         <TextView
             android:id="@+id/tv_price"
@@ -44,7 +44,7 @@
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/iv_image"
             android:text=" - "
-            android:textSize="14sp" />
+            style="@style/PrimaryText" />
 
         <TableLayout
             android:id="@+id/tl_high"
@@ -59,7 +59,7 @@
 
                 <TextView
                     android:text="High:"
-                    android:textSize="14sp" />
+                    style="@style/PrimaryText"/>
 
                 <Space android:layout_width="10dp" />
 
@@ -67,14 +67,14 @@
                     android:id="@+id/tv_high"
                     android:text=" - "
                     android:textAlignment="textEnd"
-                    android:textSize="14sp" />
+                    style="@style/PrimaryText" />
             </TableRow>
 
             <TableRow android:paddingTop="5dp">
 
                 <TextView
                     android:text="Low:"
-                    android:textSize="14sp" />
+                    style="@style/PrimaryText" />
 
                 <Space android:layout_width="10dp" />
 
@@ -82,7 +82,7 @@
                     android:id="@+id/tv_low"
                     android:text=" - "
                     android:textAlignment="viewEnd"
-                    android:textSize="14sp" />
+                    style="@style/PrimaryText" />
             </TableRow>
 
         </TableLayout>
@@ -96,13 +96,12 @@
         app:layout_constraintBottom_toTopOf="@id/rl_footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rl_description"></com.github.mikephil.charting.charts.LineChart>
+        app:layout_constraintTop_toBottomOf="@id/rl_description"/>
 
     <RelativeLayout
         android:id="@+id/rl_footer"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/colorPrimary"
+        android:layout_height="50dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -110,8 +109,8 @@
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="14sp" />
+            android:layout_margin="6dp"
+            style="@style/PrimaryText" />
 
     </RelativeLayout>
 

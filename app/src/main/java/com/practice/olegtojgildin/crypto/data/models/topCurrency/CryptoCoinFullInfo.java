@@ -38,13 +38,13 @@ public class CryptoCoinFullInfo {
                 private String FROMSYMBOL;
                 private String TOSYMBOL;
                 private String PRICE;
-                private String CHANGEDAY;
-                private String HIGHDAY;
-                private String LOWDAY;
+                private String CHANGE24HOUR;
+                private String HIGH24HOUR;
+                private String LOW24HOUR;
                 private String OPENDAY;
                 private String MKTCAP;
                 private String SUPPLY;
-                private String CHANGEPCTDAY;
+                private String CHANGEPCT24HOUR;
                 private String VOLUME24HOUR;
                 private String IMAGEURL;
                 private String MARKET;
@@ -85,16 +85,16 @@ public class CryptoCoinFullInfo {
                     return PRICE;
                 }
 
-                public String getCHANGEDAY() {
-                    return CHANGEDAY;
+                public String getCHANGE24HOUR() {
+                    return CHANGE24HOUR;
                 }
 
-                public String getHIGHDAY() {
-                    return HIGHDAY;
+                public String getHIGH24HOUR() {
+                    return HIGH24HOUR;
                 }
 
-                public String getLOWDAY() {
-                    return LOWDAY;
+                public String getLOW24HOUR() {
+                    return LOW24HOUR;
                 }
 
                 public String getOPENDAY() {
@@ -109,8 +109,8 @@ public class CryptoCoinFullInfo {
                     return SUPPLY;
                 }
 
-                public String getCHANGEPCTDAY() {
-                    return CHANGEPCTDAY;
+                public String getCHANGEPCT24HOUR() {
+                    return CHANGEPCT24HOUR;
                 }
 
                 public String getVOLUME24HOUR() {

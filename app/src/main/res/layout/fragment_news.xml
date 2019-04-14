@@ -16,14 +16,14 @@
             android:layout_alignParentLeft="true"
             android:id="@+id/news_category"
             android:text="@string/category"
-            android:textSize="16sp"/>
+            style="@style/PrimaryText"/>
 
         <Spinner
             android:id="@+id/spinner_select_cat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/news_category"
-
+            style="@style/PrimaryText"
             />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_news"

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Crypto</string>
     <string name="common_just_now">Just now</string>
-    <string name="category">Category</string>
+    <string name="category">Category: </string>
 
 
     <string-array name="categories">
@@ -35,9 +35,9 @@
     </string-array>
 
     <string-array name="coin">
+        <item>USD</item>
         <item>RUB</item>
         <item>EUR</item>
-        <item>USD</item>
         <item>JPY</item>
         <item>GBP</item>
         <item>CHF</item>
@@ -107,6 +107,7 @@
     </string-array>
 
     <string-array name="crypto1">
+        <item>BTC</item>
         <item>EOS</item>
         <item> ETH</item>
         <item> LTC</item>

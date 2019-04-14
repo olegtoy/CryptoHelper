@@ -20,7 +20,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/iv_image"
-        android:textSize="16sp" />
+        style="@style/PrimaryText" />
 
     <TextView
         android:id="@+id/tv_price"
@@ -30,7 +30,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/iv_image"
-        android:textSize="14sp" />
+        style="@style/PrimaryText" />
 
     <TextView
         android:id="@+id/tv_changePercent"
@@ -40,18 +40,17 @@
         android:layout_alignParentTop="true"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="15dp"
-        android:textSize="14sp" />
-
+        style="@style/PrimaryText" />
 
 
     <TableLayout
         android:id="@+id/contentTable"
-        android:layout_below="@id/tv_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tv_price"
         android:paddingBottom="25dp"
-        android:paddingLeft="35dp"
-        android:paddingRight="35dp"
+        android:paddingLeft="47dp"
+        android:paddingRight="23dp"
         android:paddingTop="25dp"
         android:stretchColumns="0,1">
 
@@ -59,9 +58,8 @@
 
             <TextView
                 android:padding="5dp"
-
-                android:text="Change:"
-                android:textSize="14sp" />
+                android:text="Change 24h:"
+                style="@style/SecondaryText" />
 
             <TextView
                 android:id="@+id/tv_changeValue"
@@ -69,22 +67,22 @@
                 android:layout_gravity="right"
                 android:padding="5dp"
                 android:text=" - "
-                android:textSize="14sp" />
+                style="@style/SecondaryText" />
         </TableRow>
 
         <TableRow>
 
             <TextView
                 android:padding="5dp"
-                android:text="Volume:"
-                android:textSize="14sp" />
+                android:text="Volume 24h:"
+                style="@style/SecondaryText" />
 
             <TextView
                 android:id="@+id/tv_volume"
                 android:padding="5dp"
                 android:text=" - "
                 android:textAlignment="viewEnd"
-                android:textSize="14sp" />
+                style="@style/SecondaryText"/>
         </TableRow>
 
         <TableRow>
@@ -98,52 +96,52 @@
 
             <TextView
                 android:padding="5dp"
-                android:text="High:"
-                android:textSize="14sp" />
+                android:text="High 24h:"
+                style="@style/SecondaryText" />
 
             <TextView
                 android:id="@+id/tv_high"
                 android:padding="5dp"
                 android:text=" - "
                 android:textAlignment="viewEnd"
-                android:textSize="14sp" />
+                style="@style/SecondaryText" />
         </TableRow>
 
         <TableRow>
 
             <TextView
                 android:padding="5dp"
-                android:text="Low:"
-                android:textSize="14sp" />
+                android:text="Low 24h:"
+                style="@style/SecondaryText" />
 
             <TextView
                 android:id="@+id/tv_low"
                 android:padding="5dp"
                 android:text=" - "
                 android:textAlignment="textEnd"
-                android:textSize="14sp" />
+                style="@style/SecondaryText" />
         </TableRow>
 
         <TableRow>
 
             <TextView
                 android:padding="5dp"
-                android:text="Open:"
-                android:textSize="14sp" />
+                android:text="Open 24h:"
+                style="@style/SecondaryText" />
 
             <TextView
                 android:id="@+id/tv_open"
                 android:padding="5dp"
                 android:text=" - "
                 android:textAlignment="textEnd"
-                android:textSize="14sp" />
+                style="@style/SecondaryText"/>
         </TableRow>
 
         <TableRow>
 
             <android.support.v4.widget.Space
                 android:layout_width="match_parent"
-                android:layout_height="25dp" />
+                android:layout_height="15dp" />
         </TableRow>
 
         <TableRow>
@@ -153,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="Market Cap:"
-                android:textSize="14sp" />
+                style="@style/SecondaryText" />
 
             <TextView
                 android:id="@+id/tv_marketCap"
@@ -162,46 +160,9 @@
                 android:padding="5dp"
                 android:text=" - "
                 android:textAlignment="textEnd"
-                android:textSize="14sp" />
+                style="@style/SecondaryText"/>
         </TableRow>
 
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="ProofType:"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_proofType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text=" - "
-                android:textAlignment="textEnd"
-                android:textSize="14sp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Algorithm:"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_algorithm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text=" - "
-                android:textAlignment="textEnd"
-                android:textSize="14sp" />
-        </TableRow>
 
         <TableRow>
 
@@ -210,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="Supply:"
-                android:textSize="14sp" />
+                style="@style/SecondaryText" />
 
             <TextView
                 android:id="@+id/tv_supply"
@@ -219,18 +180,18 @@
                 android:padding="5dp"
                 android:text=" - "
                 android:textAlignment="textEnd"
-                android:textSize="14sp" />
+                style="@style/SecondaryText" />
         </TableRow>
 
     </TableLayout>
 
     <Button
+        android:id="@+id/openChart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/openChart"
-        android:text="Open Chart"
         android:layout_below="@+id/contentTable"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="Open Chart" />
 
 
 </RelativeLayout>

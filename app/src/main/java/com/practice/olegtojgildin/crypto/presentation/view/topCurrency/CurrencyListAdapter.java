@@ -64,7 +64,7 @@ public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapte
         viewHolder.tvSymbol.setText(cryptoCoin.getName());
         viewHolder.tvName.setText(cryptoCoin.getFullName());
         viewHolder.tvPrice.setText(cryptoCurrency.getPrice());
-        viewHolder.tvChange.setText(cryptoCurrency.getChangePercent());
+        viewHolder.tvChange.setText(cryptoCurrency.getChangePercent() + "%");
         viewHolder.tvAlgorithm.setText(cryptoCoin.getAlgorithm());
         viewHolder.tvProofType.setText(cryptoCoin.getProofType());
         Picasso.get()
@@ -77,8 +77,8 @@ public class CurrencyListAdapter extends RecyclerView.Adapter<CurrencyListAdapte
 
     public void setColor(ViewHolder viewHolder, CryptoCurrency cryptoCurrency) {
         if (cryptoCurrency.getChangePercent().charAt(0) == '-')
-            viewHolder.tvChange.setTextColor(mContext.getResources().getColor(R.color.colorAccent));
-        else  viewHolder.tvChange.setTextColor(mContext.getResources().getColor(R.color.colorPrimary));
+            viewHolder.tvChange.setTextColor(mContext.getResources().getColor(R.color.colorNegative));
+        else  viewHolder.tvChange.setTextColor(mContext.getResources().getColor(R.color.colorPositive));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

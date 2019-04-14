@@ -9,22 +9,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/title_news"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_margin="4dp"
+        android:textSize="20dp"
+        android:textColor="@color/colorPrimaryDark"/>
     <ImageView
         android:id="@+id/image_news_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_margin="4dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/source_news"
+        android:layout_margin="4dp"
+        style="@style/SecondaryText"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/body_news"
+        android:layout_margin="8dp"
+        style="@style/SecondaryText"
+        android:textSize="18dp"
         />
 </LinearLayout>

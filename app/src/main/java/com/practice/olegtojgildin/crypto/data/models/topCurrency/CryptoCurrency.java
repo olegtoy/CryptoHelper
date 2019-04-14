@@ -23,7 +23,7 @@ public class CryptoCurrency {
     private String low;
     @SerializedName("CHANGEDAY")
     private String changeValue;
-    @SerializedName("CHANGEPCTDAY")
+    @SerializedName("CHANGEPCT24HOUR")
     private String changePercent;
     @SerializedName("SUPPLY")
     private String supply;

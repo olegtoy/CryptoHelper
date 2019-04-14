@@ -2,10 +2,10 @@
 <resources>
 
 
-    <color name="colorPrimary">#2B547E</color>
-    <color name="colorPrimaryLight">#ffffff</color>
+    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimaryLight">#8e99f3</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#ff8c40</color>
+    <color name="colorAccent">#FF5722</color>
     <color name="colorAccentLight">#696767</color>
     <color name="colorPrimaryLightText">#ffffff</color>
     <color name="colorPrimaryText">#2B547E</color>
@@ -13,8 +13,20 @@
     <color name="colorBorder">#bcb8b8</color>
     <color name="colorRowSelectorDark">#f1f1f1</color>
     <color name="colorRowSelectorLight">#ffffff</color>
-    <color name="colorPositive">#85f900</color>
-    <color name="colorNegative">#ff732d</color>
+
+    <color name="colorPositive">#2e7d32</color>
+    <color name="colorNegative">#ff3d00</color>
+
     <color name="colorChartMain">#f47f19</color>
     <color name="colorChartBorder">#979393</color>
+
+
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="primary_light">#C5CAE9</color>
+    <color name="accent">#FF5722</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#e8eaf6</color>
+    <color name="divider">#BDBDBD</color>
 </resources>

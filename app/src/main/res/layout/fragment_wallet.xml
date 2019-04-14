@@ -8,17 +8,37 @@
         android:id="@+id/wallet_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/PrimaryText"
         />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_wallet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/wallet_spinner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_below="@id/coin_spinner"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/sum_tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: "
+        style="@style/PrimaryText"
+        android:layout_toRightOf="@id/wallet_spinner"
+        android:layout_alignTop="@id/wallet_spinner"
+        />
+
+    <TextView
+        android:id="@+id/sum_Wallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/sum_tv_text"
+        android:layout_alignTop="@id/sum_tv_text"
+        style="@style/PrimaryText"
+
         />
 
     <android.support.design.widget.FloatingActionButton

@@ -19,7 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.practice.olegtojgildin.crypto.R;
-import com.practice.olegtojgildin.crypto.data.datastore.WebDataStoreImpl;
+import com.practice.olegtojgildin.crypto.data.datastore.web.WebDataStoreImpl;
 import com.practice.olegtojgildin.crypto.data.local.wallet.DbManagerPersonal;
 import com.practice.olegtojgildin.crypto.data.local.dataStore.DbDataStoreImpl;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;

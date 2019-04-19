@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.data.local.wallet;
+package com.practice.olegtojgildin.crypto.data.models.wallet;
 
 /**
  * Created by olegtojgildin on 12/04/2019.

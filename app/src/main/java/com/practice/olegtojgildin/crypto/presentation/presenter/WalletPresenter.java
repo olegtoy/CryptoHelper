@@ -2,7 +2,7 @@ package com.practice.olegtojgildin.crypto.presentation.presenter;
 
 import android.util.Log;
 
-import com.practice.olegtojgildin.crypto.data.local.wallet.CoinWithCount;
+import com.practice.olegtojgildin.crypto.data.models.wallet.CoinWithCount;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
 import com.practice.olegtojgildin.crypto.domain.wallet.WalletInteractor;
 import com.practice.olegtojgildin.crypto.presentation.view.personalFinance.WalletView;

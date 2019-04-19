@@ -30,7 +30,6 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-
         deleteTables(db);
         onCreate(db);
     }

@@ -10,7 +10,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.practice.olegtojgildin.crypto.R;
-import com.practice.olegtojgildin.crypto.data.datastore.WebDataStoreImpl;
+import com.practice.olegtojgildin.crypto.data.datastore.web.WebDataStoreImpl;
 import com.practice.olegtojgildin.crypto.data.local.favorites.DbManager;
 import com.practice.olegtojgildin.crypto.data.local.dataStore.DbDataStoreImpl;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
@@ -58,8 +57,6 @@ public class FavoritesFragment extends Fragment implements FavoritesView, Recycl
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
-
-
         mFavoriteList = new ArrayList<>();
         mFavoriteListString = new ArrayList<>();
         mAddCurrencyFAB.setOnClickListener(new View.OnClickListener() {

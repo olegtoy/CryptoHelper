@@ -1,6 +1,6 @@
 package com.practice.olegtojgildin.crypto.data.repositories;
 
-import com.practice.olegtojgildin.crypto.data.datastore.WebDataStore;
+import com.practice.olegtojgildin.crypto.data.datastore.web.WebDataStore;
 import com.practice.olegtojgildin.crypto.domain.news.NewsRepository;
 import com.practice.olegtojgildin.crypto.data.models.news.NewsList;
 

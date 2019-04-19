@@ -3,7 +3,7 @@ package com.practice.olegtojgildin.crypto.data.local.dataStore;
 import android.content.Context;
 
 import com.practice.olegtojgildin.crypto.data.local.favorites.DbManager;
-import com.practice.olegtojgildin.crypto.data.local.wallet.CoinWithCount;
+import com.practice.olegtojgildin.crypto.data.models.wallet.CoinWithCount;
 import com.practice.olegtojgildin.crypto.data.local.wallet.DbManagerPersonal;
 
 import java.util.List;

@@ -39,13 +39,13 @@ public class DbManager {
         this.dbHelper = new DbHelper(context);
     }
 
-    public void addCurrency(String note) {
+    public void addCurrency(String currency) {
         SQLiteDatabase db = null;
         try {
             db = dbHelper.getWritableDatabase();
             db.beginTransaction();
             if (db.inTransaction())
-                addNoteInternal(db, getContentValues(note));
+                addNoteInternal(db, getContentValues(currency));
             db.setTransactionSuccessful();
         } catch (SQLiteException e) {
             Log.v("SQLiteExeption", e.getMessage());

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,23 +71,28 @@ public class CurrencyDetailFragment extends Fragment {
     }
 
     public void putCoinInfo(CryptoCoinFullInfo cryptoCoinFullInfo) {
-        CryptoCoinFullInfo.Display.Crypto.Coin coin = cryptoCoinFullInfo.getDisplay().getCrypto().getCryptoCurrency();
-        mChange.setText(coin.getCHANGEPCT24HOUR() + "%");
-        mPrice.setText(coin.getPRICE());
-        mName.setText(fromSymbol);
-        mChanges.setText(coin.getCHANGE24HOUR());
-        mVolume.setText(coin.getVOLUME24HOUR());
-        mHigh.setText(coin.getHIGH24HOUR());
-        mLow.setText(coin.getLOW24HOUR());
-        mOpen.setText(coin.getOPENDAY());
-        mMarketCap.setText(coin.getMKTCAP());
-        mSupply.setText(coin.getSUPPLY());
-        setColor();
-        Picasso.get()
-                .load(coin.getIMAGEURL())
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_foreground)
-                .into(imageView);
+        if (cryptoCoinFullInfo != null) {
+            CryptoCoinFullInfo.Display.Crypto.Coin coin = cryptoCoinFullInfo.getDisplay().getCrypto().getCryptoCurrency();
+            mChange.setText(coin.getCHANGEPCT24HOUR() + "%");
+            mPrice.setText(coin.getPRICE());
+            mName.setText(fromSymbol);
+            mChanges.setText(coin.getCHANGE24HOUR());
+            mVolume.setText(coin.getVOLUME24HOUR());
+            mHigh.setText(coin.getHIGH24HOUR());
+            mLow.setText(coin.getLOW24HOUR());
+            mOpen.setText(coin.getOPENDAY());
+            mMarketCap.setText(coin.getMKTCAP());
+            mSupply.setText(coin.getSUPPLY());
+            setColor();
+            Picasso.get()
+                    .load(coin.getIMAGEURL())
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.ic_launcher_foreground)
+                    .into(imageView);
+        }
+        else {
+            Log.d("NULL", "null");
+        }
 
     }
 
@@ -101,16 +107,16 @@ public class CurrencyDetailFragment extends Fragment {
         mOpen = view.findViewById(R.id.tv_open);
         mMarketCap = view.findViewById(R.id.tv_marketCap);
         mSupply = view.findViewById(R.id.tv_supply);
-        mOpenChart=view.findViewById(R.id.openChart);
-        imageView=view.findViewById(R.id.iv_image);
+        mOpenChart = view.findViewById(R.id.openChart);
+        imageView = view.findViewById(R.id.iv_image);
     }
 
-    public void initListener(){
+    public void initListener() {
         mOpenChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, ChartFragment.newInstance(fromSymbol,toSymbol));
+                transaction.replace(R.id.fragment_container, ChartFragment.newInstance(fromSymbol, toSymbol));
                 transaction.addToBackStack(null);
                 transaction.commit();
             }

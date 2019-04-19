@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.util.Log;
 
+import com.practice.olegtojgildin.crypto.data.models.wallet.CoinWithCount;
+
 import java.util.ArrayList;
 import java.util.List;
 

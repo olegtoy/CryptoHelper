@@ -59,9 +59,9 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder
         double price = Double.parseDouble(cryptoCoinFullInfo.raw.crypto.cryptoCurrency.getPRICE());
 
         viewHolder.tvName.setText(cryptoCoinFullInfo.display.crypto.cryptoCurrency.getNameCoin());
-        viewHolder.tvCount.setText(Double.toString(count) +" "+cryptoCoinFullInfo.display.crypto.cryptoCurrency.getFROMSYMBOL());
+        viewHolder.tvCount.setText(Double.toString(count) + " " + cryptoCoinFullInfo.display.crypto.cryptoCurrency.getFROMSYMBOL());
         viewHolder.tvPrice.setText(String.format("%.2f", price));
-        viewHolder.tvSum.setText(String.format( "%.2f", count*price) + cryptoCoinFullInfo.display.crypto.cryptoCurrency.getTOSYMBOL());
+        viewHolder.tvSum.setText(String.format("%.2f", count * price) + cryptoCoinFullInfo.display.crypto.cryptoCurrency.getTOSYMBOL());
         if (mFullInfo.size() != 0)
             Picasso.get()
                     .load(mFullInfo.get(position).display.crypto.cryptoCurrency.getIMAGEURL())

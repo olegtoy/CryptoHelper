@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto.data.models;
+package com.practice.olegtojgildin.crypto.data.models.chart;
 
 import java.util.Comparator;
 
@@ -10,14 +10,13 @@ public class CryptoHistoryPoint {
 
     public float time;
 
-    public float close;
-    public float high;
-    public float low;
-    public float open;
+    private float close;
+    private float high;
+    private float low;
+    private float open;
 
-    public float volumeFrom;
-    public float volumeTo;
-
+    private float volumeFrom;
+    private float volumeTo;
     private Integer sortOrder;
 
     public CryptoHistoryPoint(float time, float close, float high, float low, float open,
@@ -52,18 +51,6 @@ public class CryptoHistoryPoint {
         return low;
     }
 
-    public float getOpen() {
-        return open;
-    }
-
-
-    public float getVolumeFrom() {
-        return volumeFrom;
-    }
-
-    public float getVolumeTo() {
-        return volumeTo;
-    }
 
     public int getSortOrder(){
         return sortOrder;

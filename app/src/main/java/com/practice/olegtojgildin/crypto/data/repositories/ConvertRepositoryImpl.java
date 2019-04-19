@@ -1,7 +1,7 @@
 package com.practice.olegtojgildin.crypto.data.repositories;
 
 import com.practice.olegtojgildin.crypto.data.models.convert.SinglePrice;
-import com.practice.olegtojgildin.crypto.data.datastore.WebDataStore;
+import com.practice.olegtojgildin.crypto.data.datastore.web.WebDataStore;
 import com.practice.olegtojgildin.crypto.domain.convert.ConvertRepository;
 
 import io.reactivex.Single;

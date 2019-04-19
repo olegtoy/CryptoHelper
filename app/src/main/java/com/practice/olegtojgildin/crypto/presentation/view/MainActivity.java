@@ -1,4 +1,4 @@
-package com.practice.olegtojgildin.crypto;
+package com.practice.olegtojgildin.crypto.presentation.view;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.practice.olegtojgildin.crypto.R;
 import com.practice.olegtojgildin.crypto.presentation.view.convert.ConvertFragment;
 import com.practice.olegtojgildin.crypto.presentation.view.favorites.FavoritesFragment;
 import com.practice.olegtojgildin.crypto.presentation.view.news.NewsFragment;

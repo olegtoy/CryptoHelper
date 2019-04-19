@@ -20,8 +20,8 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.practice.olegtojgildin.crypto.R;
 import com.practice.olegtojgildin.crypto.data.api.RetrofitHelper;
-import com.practice.olegtojgildin.crypto.data.models.CryptoHistoryPoint;
-import com.practice.olegtojgildin.crypto.data.models.HistoryList;
+import com.practice.olegtojgildin.crypto.data.models.chart.CryptoHistoryPoint;
+import com.practice.olegtojgildin.crypto.data.models.chart.HistoryList;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;
 import com.squareup.picasso.Picasso;
 

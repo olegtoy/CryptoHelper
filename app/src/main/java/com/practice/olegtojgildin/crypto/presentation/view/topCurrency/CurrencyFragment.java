@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.practice.olegtojgildin.crypto.R;
-import com.practice.olegtojgildin.crypto.data.datastore.WebDataStoreImpl;
+import com.practice.olegtojgildin.crypto.data.datastore.web.WebDataStoreImpl;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.TopCoin;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinList;
 import com.practice.olegtojgildin.crypto.data.repositories.TopCurrencyRepositoryImpl;
@@ -111,7 +111,6 @@ public class CurrencyFragment extends Fragment implements TopCurrencyView {
         mCurrencyList = new ArrayList<>();
         mCurrencyAdapter = new CurrencyListAdapter(getContext(), mCurrencyList);
         mRecyclerView.setAdapter(mCurrencyAdapter);
-
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
                 layoutManager.getOrientation());

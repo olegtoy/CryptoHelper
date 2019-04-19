@@ -30,35 +30,19 @@ public class AddCoinWithCountActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_coint_count);
-
         initView();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.crypto1, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinnerCategory.setAdapter(adapter);
-        mSpinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                nameCoin = (String) adapterView.getItemAtPosition(i);
-                // updateActivity();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         initListener();
-
-
     }
 
     public void initView() {
         countCoin = findViewById(R.id.countAdd);
         mSpinnerCategory = findViewById(R.id.wallet_add_coin);
         mAddBtn = findViewById(R.id.buttonAddtoWallet);
-
     }
 
     public static Intent newIntent(Context context) {
@@ -83,5 +67,18 @@ public class AddCoinWithCountActivity extends AppCompatActivity {
                 }
             }
         });
+        mSpinnerCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                nameCoin = (String) adapterView.getItemAtPosition(i);
+                // updateActivity();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 }

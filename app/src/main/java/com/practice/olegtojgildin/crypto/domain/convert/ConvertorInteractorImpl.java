@@ -15,7 +15,6 @@ public class ConvertorInteractorImpl implements ConvertInteractor {
         this.convertRepository = convertRepository;
     }
 
-
     @Override
     public Single<SinglePrice> getSinglePrice(String fsym, String tsyms) {
         return convertRepository.getSinglePrice(fsym,tsyms);

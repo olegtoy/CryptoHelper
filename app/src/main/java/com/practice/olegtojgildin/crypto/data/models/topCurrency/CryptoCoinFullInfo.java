@@ -17,7 +17,13 @@ public class CryptoCoinFullInfo {
 
     public class Display {
 
-        @SerializedName(value = "BTC", alternate = {"EOS", "ETH", "LTC", "XRP", "BCH", "QTUM", "PPT", "ZB", "TRX", "NEO", "BNB", "DASH", "ZEC", "ADA", "OKB", "BGG", "MANA", "ETC", "XLM", "CELR", "OMG", "HT", "BSV", "ONT", "XMR", "WABI", "USDT", "RVN", "FET", "TCH", "GXS", "BAT", "EVX", "ABT", "PAX", "BTS", "TRUE", "XEM", "AE", "NULS"})
+      //  @SerializedName(value = "BTC", alternate = {"EOS", "ETH", "LTC", "XRP", "BCH", "QTUM", "PPT", "ZB", "TRX", "NEO", "BNB", "DASH", "ZEC", "ADA", "OKB", "BGG", "MANA", "ETC", "XLM", "CELR", "OMG", "HT", "BSV", "ONT", "XMR", "WABI", "USDT", "RVN", "FET", "TCH", "GXS", "BAT", "EVX", "ABT", "PAX", "BTS", "TRUE", "XEM", "AE", "NULS"})
+        @SerializedName(value = "BTC", alternate = {"EOS", "ETH", "LTC", "XRP", "BCH", "QTUM", "PPT", "ZB", "TRX", "NEO", "BNB", "DASH",
+                "ZEC", "ADA", "OKB", "BGG", "MANA", "ETC", "XLM", "CELR", "OMG", "HT", "BSV", "ONT", "XMR", "WABI", "USDT", "FET", "TCH",
+                 "BAT", "EVX", "ABT", "PAX", "BTS", "TRUE", "XEM", "AE", "BTT", "ORBS", "ENJ", "GTO", "MEDX", "ZIL", "TUSD",
+                "HOT*", "OCN", "IOST", "IOT", "BIX","MITH", "REP", "RVN", "KCS", "WAVES", "BZ", "ITC", "HPB", "ZRX", "RNT", "SNT", "FAIR*",
+                "VET", "ONGAS", "ORS*", "MXM", "USDC", "XTZ", "DOGE", "BCD", "XAS", "ELF", "WTC", "ABBC", "KCASH", "NANO", "ICX",
+                "NULS", "KMD", "GXS", "DENT", "SWFTC", "THETA", "MFT", "TRIO", "BTM*", "ARN", "GRS", "LRC"})
         public Crypto crypto;
 
         public Crypto getCrypto() {
@@ -130,7 +136,13 @@ public class CryptoCoinFullInfo {
 
     public class Raw {
 
-        @SerializedName(value = "BTC", alternate = {"EOS", "ETH", "LTC", "XRP", "BCH", "QTUM", "PPT", "ZB", "TRX", "NEO", "BNB", "DASH", "ZEC", "ADA", "OKB", "BGG", "MANA", "ETC", "XLM", "CELR", "OMG", "HT", "BSV", "ONT", "XMR", "WABI", "USDT", "RVN", "FET", "TCH", "GXS", "BAT", "EVX", "ABT", "PAX", "BTS", "TRUE", "XEM", "AE", "NULS"})
+        @SerializedName(value = "BTC", alternate = {"EOS", "ETH", "LTC", "XRP", "BCH", "QTUM", "PPT", "ZB", "TRX", "NEO", "BNB", "DASH",
+                "ZEC", "ADA", "OKB", "BGG", "MANA", "ETC", "XLM", "CELR", "OMG", "HT", "BSV", "ONT", "XMR", "WABI", "USDT", "FET", "TCH",
+                "BAT", "EVX", "ABT", "PAX", "BTS", "TRUE", "XEM", "AE", "BTT", "ORBS", "ENJ", "GTO", "MEDX", "ZIL", "TUSD",
+                "HOT*", "OCN", "IOST", "IOT", "BIX","MITH", "REP", "RVN", "KCS", "WAVES", "BZ", "ITC", "HPB", "ZRX", "RNT", "SNT", "FAIR*",
+                "VET", "ONGAS", "ORS*", "MXM", "USDC", "XTZ", "DOGE", "BCD", "XAS", "ELF", "WTC", "ABBC", "KCASH", "NANO", "ICX",
+                "NULS", "KMD", "GXS", "DENT", "SWFTC", "THETA", "MFT", "TRIO", "BTM*", "ARN", "GRS", "LRC"})
+
         public Crypto crypto;
 
         public Crypto getCrypto() {

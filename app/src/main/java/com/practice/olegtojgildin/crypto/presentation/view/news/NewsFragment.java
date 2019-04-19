@@ -19,7 +19,7 @@ import android.widget.Spinner;
 
 import com.practice.olegtojgildin.crypto.R;
 import com.practice.olegtojgildin.crypto.data.repositories.NewsRepositoryImpl;
-import com.practice.olegtojgildin.crypto.data.datastore.WebDataStoreImpl;
+import com.practice.olegtojgildin.crypto.data.datastore.web.WebDataStoreImpl;
 import com.practice.olegtojgildin.crypto.domain.news.NewsInteractorImpl;
 import com.practice.olegtojgildin.crypto.data.models.news.CryptoNewsArticle;
 import com.practice.olegtojgildin.crypto.data.models.news.NewsList;
@@ -40,7 +40,6 @@ public class NewsFragment extends Fragment implements NewsView {
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private Spinner mSpinnerCategory;
     private String categoryNews="BTC";
-
 
     private NewsPresenter newsPresenter;
     @Nullable

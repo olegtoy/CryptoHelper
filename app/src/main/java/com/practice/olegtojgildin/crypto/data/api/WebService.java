@@ -1,6 +1,6 @@
 package com.practice.olegtojgildin.crypto.data.api;
 
-import com.practice.olegtojgildin.crypto.data.models.HistoryList;
+import com.practice.olegtojgildin.crypto.data.models.chart.HistoryList;
 import com.practice.olegtojgildin.crypto.data.models.convert.SinglePrice;
 import com.practice.olegtojgildin.crypto.data.models.news.NewsList;
 import com.practice.olegtojgildin.crypto.data.models.topCurrency.CryptoCoinFullInfo;

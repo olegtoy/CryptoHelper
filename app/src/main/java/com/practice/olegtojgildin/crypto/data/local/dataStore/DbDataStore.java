@@ -1,6 +1,6 @@
 package com.practice.olegtojgildin.crypto.data.local.dataStore;
 
-import com.practice.olegtojgildin.crypto.data.local.wallet.CoinWithCount;
+import com.practice.olegtojgildin.crypto.data.models.wallet.CoinWithCount;
 
 import java.util.List;
 
